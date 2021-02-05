@@ -1,5 +1,12 @@
 # form-design-render
 
+### 提示
+先通过系统生成页面
+
+拖拽式生成此项目页面的后台系统 —— form-design-next
+
+See [form-design](https://github.com/vincentzyc/form-design-next).
+
 ## Project setup
 ```
 npm install
@@ -15,10 +22,12 @@ npm run serve
 npm run build
 ```
 
+### Run your tests
+```
+npm run test
+```
+
 ### Lints and fixes files
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
