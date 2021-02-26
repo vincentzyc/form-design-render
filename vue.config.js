@@ -3,12 +3,13 @@ module.exports = {
   outputDir: "docs",
   productionSourceMap: false,
 
-  // configureWebpack: {
-  //   // 以下库使用cdn，不会被打包
-  //   externals: process.env.NODE_ENV === 'production' ? {
-  //     "vue": "Vue",
-  //   } : {}
-  // },
+  configureWebpack: {
+    // 以下库使用cdn，不会被打包
+    externals: process.env.NODE_ENV === 'production' ? {
+      "vue": "Vue",
+      "vuex": "Vuex",
+    } : {}
+  },
 
   // chainWebpack: config => {
   //   config.plugins.delete('preload')
