@@ -1,36 +1,23 @@
-import { isDef, isObject } from '.';
+import { isObject, isArray } from '.';
 
 type ObjectIndex = Record<string, any>;
 
-const { hasOwnProperty } = Object.prototype;
-
-export function deepAssign(to: ObjectIndex, from: ObjectIndex): ObjectIndex {
-  Object.keys(from).forEach((key) => {
-    const val = from[key];
-
-    if (!isDef(val)) {
-      return;
+/**
+ * 对象深拷贝
+ * @param {Object} obj 初始对象
+ * @return {Object} 拷贝后对象
+ */
+export function deepClone(obj: ObjectIndex): ObjectIndex {
+  let result = isArray(obj) ? [] : {};
+  for (let key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      if (obj[key] === undefined || obj[key] === null) continue
+      if (isObject(obj[key]) || isArray(obj[key])) {
+        result[key] = deepClone(obj[key]);
+      } else {
+        result[key] = obj[key];
+      }
     }
-
-    if (!hasOwnProperty.call(to, key) || !isObject(val)) {
-      to[key] = val;
-    } else {
-      to[key] = deepAssign(Object(to[key]), from[key]);
-    }
-  });
-
-  return to;
-}
-
-
-export function deepClone(obj: Record<string, any>): Record<string, any> {
-  if (Array.isArray(obj)) {
-    return obj.map((item) => deepClone(item));
   }
-
-  if (typeof obj === 'object') {
-    return deepAssign({}, obj);
-  }
-
-  return obj;
+  return result;
 }
