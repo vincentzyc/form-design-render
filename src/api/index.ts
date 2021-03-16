@@ -1,6 +1,6 @@
 import { ApiModule } from "./types"
-import apiModule1 from './apiModule1';
-import apiModule2 from './apiModule2';
+import { apiModule1, ApiModuleList1 } from './apiModule1';
+import { apiModule2, ApiModuleList2 } from './apiModule2';
 import Axios from '@/plugins/axios'
 
 const createInterface = (arr: ApiModule[]) => {
@@ -15,8 +15,8 @@ const createInterface = (arr: ApiModule[]) => {
   return Interface
 }
 
-export const ApiModule1 = createInterface(apiModule1)
-export const ApiModule2 = createInterface(apiModule2)
+export const ApiModule1 = createInterface(apiModule1) as ApiModuleList1
+export const ApiModule2 = createInterface(apiModule2) as ApiModuleList2
 export function env() {
   if (process.env.NODE_ENV === "development") return "development";
   return "production";
@@ -36,7 +36,7 @@ export function previewOrigin() {
   return window.location.origin
 }
 export function apiUrl() {
-  return "http://xxx.com/";
+  return "http://xxx.com";
 }
 export function axiosPost(url: string, data: unknown) {
   return new Promise(resolve => {
