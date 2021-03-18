@@ -6,7 +6,7 @@ type UrlParamBack = null | string | Record<string, any>
  * @param key 判断 key值
  * @return {Boolean} 是否存在标识
  */
-export function hasKey(obj: any, key: string): boolean {
+export function hasKey(obj: unknown, key: string): boolean {
   if (!obj) return false
   return Object.prototype.hasOwnProperty.call(obj, key)
 }
