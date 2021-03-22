@@ -71,4 +71,5 @@ export default defineComponent({
         </div>
       )
     }
-  })
+  }
+})
