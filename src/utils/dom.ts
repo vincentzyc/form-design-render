@@ -1,7 +1,7 @@
 /**
  * 滑动到底部
  */
-export function easeBottom() {
+export function easeBottom(): void {
   let position = window.pageYOffset
   const destination = document.documentElement.offsetHeight - document.documentElement.clientHeight
   // 不存在原生`requestAnimationFrame`，用`setTimeout`模拟替代
@@ -32,7 +32,7 @@ export function easeBottom() {
      let dom = scrollTop === document.documentElement.scrollTop ? document.documentElement : document.body;
      easeout(dom, 0);
    */
-export function easeout(dom: HTMLElement, destination: number = 0, rate: number = 5): void {
+export function easeout(dom: HTMLElement, destination = 0, rate = 5): void {
   let position = dom.scrollTop;
   if (position === destination || typeof destination !== "number" || rate === 0) {
     return;
@@ -43,7 +43,7 @@ export function easeout(dom: HTMLElement, destination: number = 0, rate: number 
       return setTimeout(fn, 17);
     };
   }
-  let step = function () {
+  function step() {
     position = position + (destination - position) / rate;
     if (Math.abs(destination - position) < 1) {
       //动画结束
@@ -52,7 +52,7 @@ export function easeout(dom: HTMLElement, destination: number = 0, rate: number 
     }
     dom.scrollTop = position;
     requestAnimationFrame(step);
-  };
+  }
   step();
 }
 
@@ -61,15 +61,15 @@ export function easeout(dom: HTMLElement, destination: number = 0, rate: number 
  * @param {Object} el 当前dom元素 
  * @param {Number} offset 元素距离顶部的偏移量
  */
-export function scrollIntoView(el: HTMLElement, offset: number = 200): void {
+export function scrollIntoView(el: HTMLElement, offset = 200): void {
   if (!el) return;
   if (typeof offset !== 'number') return;
-  let clientRect = el.getBoundingClientRect();
-  let isElementInViewport = clientRect.top >= 0 && clientRect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+  const clientRect = el.getBoundingClientRect();
+  const isElementInViewport = clientRect.top >= 0 && clientRect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
   if (!isElementInViewport) {
-    let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    let dom = scrollTop === document.documentElement.scrollTop ? document.documentElement : document.body;
-    let destination = (scrollTop + clientRect.top - offset) > 0 ? (scrollTop + clientRect.top - offset) : 0
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const dom = scrollTop === document.documentElement.scrollTop ? document.documentElement : document.body;
+    const destination = (scrollTop + clientRect.top - offset) > 0 ? (scrollTop + clientRect.top - offset) : 0
     easeout(dom, destination, 10)
   }
 }
