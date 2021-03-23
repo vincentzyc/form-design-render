@@ -4,7 +4,7 @@ import { apiModule2, ApiModuleList2 } from './apiModule2';
 import Axios from '@/plugins/axios'
 
 const createInterface = (arr: ApiModule[]) => {
-  let Interface = {};
+  const Interface = {};
   arr.forEach(v => {
     Interface[v.name] = (param: unknown) => {
       return new Promise(reslove => {
@@ -23,14 +23,14 @@ export function env() {
 }
 export function previewUrl() {
   if (env() === "development") {
-    let arr = window.location.origin.split(":");
+    const arr = window.location.origin.split(":");
     return `${arr[0]}:${arr[1]}:9000`
   }
   return window.location.origin + "/form-design-h5"
 }
 export function previewOrigin() {
   if (env() === "development") {
-    let arr = window.location.origin.split(":");
+    const arr = window.location.origin.split(":");
     return `${arr[0]}:${arr[1]}:9000`
   }
   return window.location.origin
@@ -49,14 +49,14 @@ export function axiosPost(url: string, data: unknown) {
 }
 export function postMsgoUrl() {
   if (env() === "development") {
-    let arr = window.location.origin.split(":");
+    const arr = window.location.origin.split(":");
     return `${arr[0]}:${arr[1]}:9000`
   }
   return window.location.origin + "/form-design"
 }
 export function postMsgoOrigin() {
   if (env() === "development") {
-    let arr = window.location.origin.split(":");
+    const arr = window.location.origin.split(":");
     return `${arr[0]}:${arr[1]}:9000`
   }
   return window.location.origin
