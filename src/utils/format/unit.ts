@@ -5,9 +5,9 @@ import { getType } from "..";
  * @param {String} str 含 px 字符串  例如：50px 10px 0 10px ; <span style="16px">测试</span>
  * @return {String} 转化后含rem字符串 例如：1rem 0.3rem 0 0.2rem ; <span style="0.32rem">测试</span>
  */
-export function changeRem(str: string = ""): string {
+export function changeRem(str = ""): string {
   if (getType(str) !== 'String') str = str.toString();
-  let nospace = str.trim();
+  const nospace = str.trim();
   return nospace.replace(/(-?\d+)(px)/g, (a, b) => {
     return b / 50 + 'rem'
   })
