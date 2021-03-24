@@ -1,4 +1,4 @@
-import { defineComponent, reactive } from "vue"
+import { computed, defineComponent, reactive } from "vue"
 import RenderPage from "@/components/RenderPage";
 import { initScript } from "./utils";
 import { useStore } from "vuex"
@@ -11,13 +11,13 @@ export default defineComponent({
   name: "App",
   setup() {
     const store = useStore()
-    let pageData = reactive({} as Record<string, any>)
+    const pageData = computed(() => store.state.pageData)
 
-    const initPage = async () => {
-      if (!pageData) return;
-      store.commit('setPageData', pageData);
-      document.title = pageData.title;
-      initScript(pageData.statsCode, 'initjscode');  //添加第三方统计代码
+    const initPage = (pgData: Record<string, any>) => {
+      if (!pgData) return;
+      store.commit('setPageData', pgData);
+      document.title = pgData.title;
+      initScript(pgData.statsCode, 'initjscode');  //添加第三方统计代码
     }
     const getPageData = () => {
       // 获取数据优先级： url参数id > 本地 sessionStorage > postMessage监听
@@ -28,10 +28,9 @@ export default defineComponent({
       // console.log(id);
 
       // 本地 sessionStorage获取（实时预览的时候刷新页面）
-      let sPageData = getSessionStorage("pageData");
+      const sPageData = getSessionStorage("pageData");
       if (sPageData) {
-        store.commit('setPageData', sPageData);
-        return initPage();
+        return initPage(sPageData);
       }
 
       // postMessage监听（实时预览）
@@ -41,8 +40,7 @@ export default defineComponent({
           if (event.data.list) {
             const sourceWin = event.source as Window
             sourceWin.postMessage('Received', postMsgoUrl());
-            pageData = event.data
-            initPage()
+            initPage(event.data)
             return setSessionStorage("pageData", event.data);
           }
         }
@@ -52,21 +50,21 @@ export default defineComponent({
     getPageData()
 
     return () => {
-      if (!pageData) return null;
+      if (!pageData.value) return null;
       const wrapStyle = {
-        ...formatStyle(pageData.style),
-        backgroundImage: `url(${pageData.style.backgroundImage})`
+        ...formatStyle(pageData.value.style),
+        backgroundImage: `url(${pageData.value.style.backgroundImage})`
       }
       return (
         <div
-          class={['wrapper', pageData.theme]}
+          class={['wrapper', pageData.value.theme]}
           style={wrapStyle}
         >
           <RenderPage
-            list={pageData.list}
-            fixedTop={pageData.fixedTop}
-            fixedBottom={pageData.fixedBottom}
-            fixedCustom={pageData.fixedCustom}
+            list={pageData.value.list}
+            fixedTop={pageData.value.fixedTop}
+            fixedBottom={pageData.value.fixedBottom}
+            fixedCustom={pageData.value.fixedCustom}
           />
         </div>
       )
