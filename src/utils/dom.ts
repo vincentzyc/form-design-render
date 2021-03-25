@@ -1,4 +1,39 @@
 /**
+ * 执行js代码
+ * @param {String} code js代码
+ * @param {String} id id标识（相同id只执行一次，不传id每次都会执行）
+ */
+function createScript(code: string, id: string): void {
+  if (/<script(.*)src=(.*)><\/script>/.test(code)) {
+    let arr = code.match(/src=["|']?(.*?)('|"|>|\\s+)/);
+    let script = document.createElement("script");
+    script.src = arr ? arr[1] : '';
+    document.head.appendChild(script);
+    return;
+  }
+  let arr = code.match(/<script(.*?)>(.*)<\/script>/);
+  if (Array.isArray(arr) && arr.length >= 3) code = arr[2];  //提取js代码
+  if (!/[A-Za-z]/.test(code)) return;
+  let script = document.createElement("script");
+  if (id) script.id = id;
+  script.type = "text/javascript";
+  script.innerHTML = code;
+  document.head.appendChild(script);
+}
+/**
+ * 批量执行js代码
+ * @param {String} jscode js代码
+ * @param {String} scriptid id标识（相同id只执行一次，不传id每次都会执行）
+ */
+export function initScript(jscode: string, scriptid: string): void {
+  if (typeof jscode !== 'string') return;
+  if (scriptid && document.getElementById(scriptid)) return;
+  jscode = jscode.replace(/[\r\n]/g, '');  //去除换行
+  let scriptArr = jscode.match(/<script(.*?)>(.*?)<\/script>/g);
+  scriptArr ? scriptArr.forEach(v => createScript(v, scriptid)) : createScript(jscode, scriptid);
+}
+
+/**
  * 滑动到底部
  */
 export function easeBottom(): void {
