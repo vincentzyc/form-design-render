@@ -28,9 +28,9 @@ export default defineComponent({
   },
   setup(props) {
     const store = useStore()
-    let showFixedBottom = ref(true)
-    let showFixedTop = ref(true)
-    let backAlert = ref(false)
+    const showFixedBottom = ref(true)
+    const showFixedTop = ref(true)
+    const backAlert = ref(false)
 
     const pageData = computed(() => store.state.pageData)
 
@@ -47,12 +47,12 @@ export default defineComponent({
     }
     const showFixed = () => {
       if (props.fixedBottom.length <= 0 && props.fixedTop.length <= 0) return
-      let fbData = props.fixedBottom.length > 0 ? props.fixedBottom[0] as Record<string, any> : null;
-      let ftData = props.fixedTop.length > 0 ? props.fixedTop[0] as Record<string, any> : null;
+      const fbData = props.fixedBottom.length > 0 ? props.fixedBottom[0] as Record<string, any> : null;
+      const ftData = props.fixedTop.length > 0 ? props.fixedTop[0] as Record<string, any> : null;
       if (hasKey(fbData, 'scrollHeight')) showFixedBottom.value = fbData?.scrollHeight === 0;
       if (hasKey(ftData, 'scrollHeight')) showFixedTop.value = ftData?.scrollHeight === 0;
       window.addEventListener('scroll', () => {
-        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         if (hasKey(fbData, 'scrollHeight')) showFixedBottom.value = scrollTop >= fbData?.scrollHeight
         if (hasKey(ftData, 'scrollHeight')) showFixedTop.value = scrollTop >= ftData?.scrollHeight
       })
@@ -103,11 +103,11 @@ export default defineComponent({
           class="widget-form-list"
           style={formatStyle(item.style)}
         >
-          {(item.list as Record<string, any>[]).map(formItem => <WidgetItems ref="wgList" key={formItem.key} item={formItem} />)}
+          {(item.list as Record<string, any>[]).map(formItem => <WidgetItems key={formItem.key} item={formItem} />)}
         </div>
-        : <WidgetItems ref="wgList" item={item} key={item.key} />) : []
+        : <WidgetItems item={item} key={item.key} />) : []
 
-    const backDialog = isHijack ?
+    const backDialog = isHijack.value ?
       <van-dialog
         vModel={backAlert.value}
         get-container="body"
