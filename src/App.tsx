@@ -1,11 +1,11 @@
 import { computed, defineComponent, reactive } from "vue"
 import RenderPage from "@/components/RenderPage";
-import { initScript } from "./utils";
 import { useStore } from "vuex"
 import { getSessionStorage, setSessionStorage } from "./utils/storage";
 import { postMsgoOrigin, postMsgoUrl } from "./api";
 import '@/assets/css/themes.styl';
 import { formatStyle } from "./utils/format/unit";
+import { initScript } from "./utils/dom";
 
 export default defineComponent({
   name: "App",
