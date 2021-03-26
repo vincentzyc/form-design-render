@@ -3,9 +3,9 @@ import { openLoading, closeLoading } from '@/utils/loading';
 import { Dialog, Toast } from 'vant';
 import { useStore } from "vuex";
 
-const State = useStore().state
+const State = useStore()?.state
 
-let formData: Record<string, any> = {}
+const formData: Record<string, any> = {}
 
 const ruleList = {
   phone: (value: string) => {
@@ -26,8 +26,8 @@ const ruleList = {
   },
   mail: (value: string) => {
     if (!value) return '请输入邮箱';
-    // eslint-disable-next-line no-useless-escape
-    if (/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value)) return true;
+    const emailReg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    if (emailReg.test(value)) return true;
     return '邮箱格式不正确'
   },
   shootPlace: (value: string[]) => {
@@ -108,7 +108,7 @@ export function valiDate(obj: Record<string, any>): boolean | string {
 
 
 export function handleSubmit() {
-  let valiDateRes = State.valiPopupDate ? valiPopupDate(State.pageData.list) : valiAllDate(State.pageData.list);
+  const valiDateRes = State.valiPopupDate ? valiPopupDate(State.pageData.list) : valiAllDate(State.pageData.list);
   if (valiDateRes !== true && valiDateRes !== false) return Toast(valiDateRes)
   submit(formData);
 }
@@ -128,7 +128,7 @@ export function submit(data: Record<string, any>) {
 function valiPopupDate(list: Record<string, any>[]): boolean | string {
   for (const item of list) {
     if (Array.isArray(item.list) && item.list.length > 0) {
-      let res = valiPopupDate(item.list);
+      const res = valiPopupDate(item.list);
       if (res !== true) return res;
     }
     if (Array.isArray(item.popupList) && item.popupList.length > 0 && item.showPopup) {
@@ -141,11 +141,11 @@ function valiPopupDate(list: Record<string, any>[]): boolean | string {
 function valiAllDate(list: Record<string, any>[], isScrollIntoView = true): boolean | string {
   for (const item of list) {
     if (Array.isArray(item.list) && item.list.length > 0) {
-      let res = valiAllDate(item.list, isScrollIntoView);
+      const res = valiAllDate(item.list, isScrollIntoView);
       if (res !== true) return res;
     }
     if (!item.apiKey) continue;
-    let res = valiDate(item);
+    const res = valiDate(item);
     if (res === true) {
       formatParam(item);
       continue
