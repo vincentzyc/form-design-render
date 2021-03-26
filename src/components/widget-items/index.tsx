@@ -1,4 +1,4 @@
-import { defineComponent, resolveDynamicComponent } from "vue"
+import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "vue"
 
 // import WgPhone from "./wg-phone"
 // import WgInput from "./wg-input"
@@ -8,7 +8,7 @@ import { defineComponent, resolveDynamicComponent } from "vue"
 // import WgDate from "./wg-date"
 // import WgImgShow from "./wg-imgshow"
 // import WgStaticText from "./wg-statictext"
-// import WgButton from "./wg-button"
+// import WgButton from "./WgButton"
 // import wgSplitLine from "./wg-splitLine"
 // import WgWechat from './wg-wechat'
 // import WgMarquee from './wg-marquee'
@@ -19,9 +19,9 @@ import { defineComponent, resolveDynamicComponent } from "vue"
 
 
 export default defineComponent({
-  name: "widgetItems",
+  name: "WidgetItems",
   components: {
-    WgButton: () => import("./wg-button")
+    WgButton: defineAsyncComponent(() => import("./WgButton"/* webpackChunkName: "WgButton" */))
   },
   props: {
     item: {
