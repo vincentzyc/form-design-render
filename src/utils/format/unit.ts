@@ -1,4 +1,4 @@
-import { getType } from "..";
+import { getType } from "../validate/dataType";
 
 /**
  * px转rem
