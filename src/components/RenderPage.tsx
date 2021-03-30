@@ -1,5 +1,5 @@
 import { computed, defineComponent, ref } from "vue"
-import WidgetItems from "@/components/widget-items/index";
+import WidgetItems from "@/components/WidgetItems";
 import '@/assets/css/widget.styl';
 import { formatStyle } from "@/utils/format/unit";
 import { isLink } from "@/utils/validate/link";
