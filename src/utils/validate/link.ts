@@ -5,3 +5,8 @@ export function isLink(value: string): boolean {
   const isLink = pattern.test(value);
   return isLink;
 }
+
+export function jumpLink(link: string): void {
+  if (!isLink(link)) return;
+  window.location.href = link
+}
