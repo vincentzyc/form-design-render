@@ -6,7 +6,7 @@ import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "
 // import WgSelect from "./wg-select"
 // import WgSwitch from "./wg-switch"
 // import WgDate from "./wg-date"
-// import WgImgShow from "./wg-imgshow"
+import WgImgShow from "./WgImgShow"
 // import WgStaticText from "./wg-statictext"
 // import WgButton from "./WgButton"
 // import wgSplitLine from "./wg-splitLine"
@@ -14,14 +14,16 @@ import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "
 // import WgMarquee from './wg-marquee'
 // import WgAgreement from './wg-agreement'
 // import WgMarqueeSingle from './wg-marquee-single'
-// import WgVideoPlay from './wg-video-play'
+import WgVideoPlay from './WgVideoPlay'
 // import WgRandomCode from './wg-random-code'
 
 
 export default defineComponent({
   name: "WidgetItems",
   components: {
-    WgButton: defineAsyncComponent(() => import("./WgButton"/* webpackChunkName: "WgButton" */))
+    WgButton: defineAsyncComponent(() => import("./WgButton"/* webpackChunkName: "WgButton" */)),
+    WgImgShow: WgImgShow,
+    WgVideoPlay: WgVideoPlay,
   },
   props: {
     item: {
