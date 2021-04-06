@@ -1,4 +1,4 @@
-import { computed, defineComponent, ref } from "vue"
+import { computed, defineComponent } from "vue"
 import RenderPage from "@/components/RenderPage";
 import { useStore } from "vuex"
 import { getSessionStorage, setSessionStorage } from "./utils/storage";
@@ -47,8 +47,6 @@ export default defineComponent({
       }, false);
     }
 
-    const haha = ref('123123')
-
     getPageData()
 
     return () => {
@@ -62,9 +60,7 @@ export default defineComponent({
           class={['wrapper', pageData.value.theme]}
           style={wrapStyle}
         >
-          <p>{JSON.stringify(haha.value)}</p>
           <RenderPage
-            v-model={haha}
             list={pageData.value.list}
             fixedTop={pageData.value.fixedTop}
             fixedBottom={pageData.value.fixedBottom}
