@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <van-button type="primary">主要按钮</van-button>
+    <van-button @click="test" type="primary">主要按钮</van-button>
     <van-button type="success">成功按钮</van-button>
     <van-button type="default">默认按钮</van-button>
     <van-button type="warning">警告按钮</van-button>
@@ -21,6 +21,16 @@ export default defineComponent({
   props: {
     msg: String,
   },
+  emits: ['update:modelValue'],
+  setup(props, { emit }) {
+    const test = () => {
+      console.log(12313);
+      emit('update:modelValue', '666')
+    }
+    return {
+      test
+    }
+  }
 });
 </script>
 
