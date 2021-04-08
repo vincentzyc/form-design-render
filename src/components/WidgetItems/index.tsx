@@ -7,7 +7,7 @@ import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "
 // import WgSwitch from "./wg-switch"
 // import WgDate from "./wg-date"
 import WgImgShow from "./WgImgShow"
-// import WgStaticText from "./wg-statictext"
+import WgStaticText from "./WgStaticText"
 // import WgButton from "./WgButton"
 // import wgSplitLine from "./wg-splitLine"
 // import WgWechat from './wg-wechat'
@@ -24,6 +24,7 @@ export default defineComponent({
     WgButton: defineAsyncComponent(() => import("./WgButton"/* webpackChunkName: "WgButton" */)),
     WgImgShow: WgImgShow,
     WgVideoPlay: WgVideoPlay,
+    WgStaticText: WgStaticText
   },
   props: {
     item: {
