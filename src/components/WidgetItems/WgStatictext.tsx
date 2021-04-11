@@ -10,17 +10,16 @@ export default defineComponent({
       default: () => ({})
     }
   },
-  emits: ['update:item'],
-  setup(props, { emit }) {
+  setup(props) {
     const domStyle = {
       backgroundColor: props.item.backgroundColor || '',
       backgroundImage: props.item.backgroundImage ? `url(${props.item.backgroundImage})` : ''
     }
     const handleClick = () => {
       if (props.item.link) return jumpLink(props.item.link)
-      if (props.item.popupList?.length > 0) {
-        emit('update:item', { ...props.item, showPopup: true })
-      }
+//      if (props.item.popupList?.length > 0) {
+//        emit('update:item', { ...props.item, showPopup: true })
+//      }
     }
     return () => (
       <div class="wg-staticText clearfix" style={domStyle} >
