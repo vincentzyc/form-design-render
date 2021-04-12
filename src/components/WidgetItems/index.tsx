@@ -33,13 +33,22 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props) {
+  setup(props, { emit }) {
+    const test = () => {
+      emit('update:item', {
+        ...props.item,
+        showPopup: true
+      })
+    }
     return () => {
       const Widget: any = resolveDynamicComponent('Wg' + props.item.type)
 
       return (
         <div class="widget-view">
+          <p onClick={test}>{JSON.stringify(props.item)}</p>
           <Widget item={props.item} />
+          {/* <Widget item={props.item} /> */}
+          {/* {...{ 'onUpdate:modelValue': onInput }} */}
         </div>
       )
     }
