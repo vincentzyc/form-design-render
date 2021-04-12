@@ -87,7 +87,6 @@ export default defineComponent({
       //   ...pageData.value,
       //   list:[v]
       // });
-      console.log(v);
       pageData.value.list = [v]
     }
 
@@ -122,7 +121,6 @@ export default defineComponent({
     if (isHijack.value) hijackBack()
 
     return () => {
-      console.log(123);
       return (
         <div class="widget-list">
           {fixedTopNode}
