@@ -60,12 +60,7 @@ export default defineComponent({
           class={['wrapper', pageData.value.theme]}
           style={wrapStyle}
         >
-          <RenderPage
-            list={pageData.value.list}
-            fixedTop={pageData.value.fixedTop}
-            fixedBottom={pageData.value.fixedBottom}
-            fixedCustom={pageData.value.fixedCustom}
-          />
+          <RenderPage />
         </div>
       )
     }
