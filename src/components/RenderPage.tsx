@@ -8,31 +8,18 @@ import { hasKey } from "@/utils";
 
 export default defineComponent({
   name: "renderPage",
-  props: {
-    list: {
-      type: Array,
-      default: () => []
-    },
-    fixedTop: {
-      type: Array,
-      default: () => []
-    },
-    fixedCustom: {
-      type: Array,
-      default: () => []
-    },
-    fixedBottom: {
-      type: Array,
-      default: () => []
-    }
-  },
-  setup(props) {
+  setup() {
     const store = useStore()
     const showFixedBottom = ref(true)
     const showFixedTop = ref(true)
     const backAlert = ref(false)
 
     const pageData = computed(() => store.state.pageData)
+
+    // const list = pageData.value.list
+    const fixedTop = pageData.value.fixedTop
+    const fixedBottom = pageData.value.fixedBottom
+    const fixedCustom = pageData.value.fixedCustom
 
     const isHijack = computed(() => pageData.value.hijackBack?.isHijack ? true : false)
 
@@ -46,9 +33,9 @@ export default defineComponent({
       }
     }
     const showFixed = () => {
-      if (props.fixedBottom.length <= 0 && props.fixedTop.length <= 0) return
-      const fbData = props.fixedBottom.length > 0 ? props.fixedBottom[0] as Record<string, any> : null;
-      const ftData = props.fixedTop.length > 0 ? props.fixedTop[0] as Record<string, any> : null;
+      if (fixedBottom.length <= 0 && fixedTop.length <= 0) return
+      const fbData = fixedBottom.length > 0 ? fixedBottom[0] as Record<string, any> : null;
+      const ftData = fixedTop.length > 0 ? fixedTop[0] as Record<string, any> : null;
       if (hasKey(fbData, 'scrollHeight')) showFixedBottom.value = fbData?.scrollHeight === 0;
       if (hasKey(ftData, 'scrollHeight')) showFixedTop.value = ftData?.scrollHeight === 0;
       window.addEventListener('scroll', () => {
@@ -74,30 +61,38 @@ export default defineComponent({
       // window.history.back();
     }
 
-    const fixedTopNode = props.fixedTop.length > 0 ?
+    const fixedTopNode = fixedTop.length > 0 ?
       <transition name="fade">
         <div v-show={showFixedTop} class="wg-fixed-top" style="max-width:640px">
-          {(props.fixedTop as Record<string, any>[]).map(ftItem => <WidgetItems item={ftItem} key={ftItem.key} />)}
+          {(fixedTop as Record<string, any>[]).map(ftItem => <WidgetItems item={ftItem} key={ftItem.key} />)}
         </div>
       </transition> : null
 
-    const fixedCustomNode = props.fixedCustom.length > 0 ?
+    const fixedCustomNode = fixedCustom.length > 0 ?
       <transition name="fade">
         <div ref="fixedCustom" class="wg-fixed-custom" style="max-width:640px">
-          {(props.fixedCustom as Record<string, any>[]).map(fcItem => <WidgetItems item={fcItem} key={fcItem.key} class="fixed-item" style={fixedCustomStyle(fcItem)} />)}
+          {(fixedCustom as Record<string, any>[]).map(fcItem => <WidgetItems item={fcItem} key={fcItem.key} class="fixed-item" style={fixedCustomStyle(fcItem)} />)}
         </div>
       </transition> : null
 
-    const fixedBottomNode = props.fixedBottom.length > 0 ?
+    const fixedBottomNode = fixedBottom.length > 0 ?
       <transition name="fade">
         <div v-show={showFixedBottom} class="wg-fixed-bottom" style="max-width:640px">
-          {(props.fixedBottom as Record<string, any>[]).map(fbItem => <WidgetItems item={fbItem} key={fbItem.key} />)}
+          {(fixedBottom as Record<string, any>[]).map(fbItem => <WidgetItems item={fbItem} key={fbItem.key} />)}
         </div>
       </transition> : null
 
+    const onInput = (v: Record<string, any>) => {
+      // store.commit('setPageData', {
+      //   ...pageData.value,
+      //   list:[v]
+      // });
+      console.log(v);
+      pageData.value.list = [v]
+    }
 
-    const listNode = props.list.length > 0 ?
-      (props.list as Record<string, any>[]).map(item => item.type === 'formList' ?
+    const listNode = () => pageData.value.list.length > 0 ?
+      (pageData.value.list as Record<string, any>[]).map(item => item.type === 'formList' ?
         <div
           key={item.key}
           class="widget-form-list"
@@ -105,11 +100,11 @@ export default defineComponent({
         >
           {(item.list as Record<string, any>[]).map(formItem => <WidgetItems key={formItem.key} item={formItem} />)}
         </div>
-        : <WidgetItems item={item} key={item.key} />) : []
+        : <WidgetItems item={item} {...{ 'onUpdate:item': onInput }} key={item.key} />) : []
 
     const backDialog = isHijack.value ?
       <van-dialog
-        vModel={backAlert.value}
+        v-model={backAlert.value}
         get-container="body"
         showConfirmButton={false}
         style="{'background-color': 'transparent'}"
@@ -126,14 +121,17 @@ export default defineComponent({
     showFixed()
     if (isHijack.value) hijackBack()
 
-    return () => (
-      <div class="widget-list">
-        {fixedTopNode}
-        {fixedCustomNode}
-        {...listNode}
-        {fixedBottomNode}
-        {backDialog}
-      </div>
-    )
+    return () => {
+      console.log(123);
+      return (
+        <div class="widget-list">
+          {fixedTopNode}
+          {fixedCustomNode}
+          {listNode()}
+          {fixedBottomNode}
+          {backDialog}
+        </div>
+      )
+    }
   }
 })
