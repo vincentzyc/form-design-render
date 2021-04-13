@@ -47,7 +47,6 @@ export default defineComponent({
         <div class="widget-view">
           <p onClick={test}>{JSON.stringify(props.item)}</p>
           <Widget item={props.item} />
-          {/* <Widget item={props.item} /> */}
           {/* {...{ 'onUpdate:modelValue': onInput }} */}
         </div>
       )
