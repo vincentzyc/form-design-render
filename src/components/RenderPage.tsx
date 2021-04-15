@@ -16,7 +16,7 @@ export default defineComponent({
 
     const pageData = computed(() => store.state.pageData)
 
-    // const list = pageData.value.list
+    const list = pageData.value.list
     const fixedTop = pageData.value.fixedTop
     const fixedBottom = pageData.value.fixedBottom
     const fixedCustom = pageData.value.fixedCustom
@@ -82,15 +82,8 @@ export default defineComponent({
         </div>
       </transition> : null
 
-    // const onInput = (v: Record<string, any>) => {
-      // store.commit('setPageData', {
-      //   ...pageData.value,
-      //   list:[v]
-      // });
-    // }
-
-    const listNode = () => pageData.value.list.length > 0 ?
-      (pageData.value.list as Record<string, any>[]).map(item => item.type === 'formList' ?
+    const listNode = () => list.length > 0 ?
+      (list as Record<string, any>[]).map(item => item.type === 'formList' ?
         <div
           key={item.key}
           class="widget-form-list"
@@ -99,7 +92,6 @@ export default defineComponent({
           {(item.list as Record<string, any>[]).map(formItem => <WidgetItems key={formItem.key} item={formItem} />)}
         </div>
         : <WidgetItems item={item} key={item.key} />) : []
-        // : <WidgetItems item={item} {...{ 'onUpdate:item': onInput }} key={item.key} />) : []
 
     const backDialog = isHijack.value ?
       <van-dialog
