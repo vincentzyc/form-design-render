@@ -61,21 +61,21 @@ export default defineComponent({
       // window.history.back();
     }
 
-    const fixedTopNode = fixedTop.length > 0 ?
+    const fixedTopNode = () => fixedTop.length > 0 ?
       <transition name="fade">
         <div v-show={showFixedTop} class="wg-fixed-top" style="max-width:640px">
           {(fixedTop as Record<string, any>[]).map(ftItem => <WidgetItems item={ftItem} key={ftItem.key} />)}
         </div>
       </transition> : null
 
-    const fixedCustomNode = fixedCustom.length > 0 ?
+    const fixedCustomNode = () => fixedCustom.length > 0 ?
       <transition name="fade">
         <div ref="fixedCustom" class="wg-fixed-custom" style="max-width:640px">
           {(fixedCustom as Record<string, any>[]).map(fcItem => <WidgetItems item={fcItem} key={fcItem.key} class="fixed-item" style={fixedCustomStyle(fcItem)} />)}
         </div>
       </transition> : null
 
-    const fixedBottomNode = fixedBottom.length > 0 ?
+    const fixedBottomNode = () => fixedBottom.length > 0 ?
       <transition name="fade">
         <div v-show={showFixedBottom} class="wg-fixed-bottom" style="max-width:640px">
           {(fixedBottom as Record<string, any>[]).map(fbItem => <WidgetItems item={fbItem} key={fbItem.key} />)}
@@ -93,7 +93,7 @@ export default defineComponent({
         </div>
         : <WidgetItems item={item} key={item.key} />) : []
 
-    const backDialog = isHijack.value ?
+    const backDialog = () => isHijack.value ?
       <van-dialog
         v-model={backAlert.value}
         get-container="body"
@@ -115,11 +115,11 @@ export default defineComponent({
     return () => {
       return (
         <div class="widget-list">
-          {fixedTopNode}
-          {fixedCustomNode}
+          {fixedTopNode()}
+          {fixedCustomNode()}
           {listNode()}
-          {fixedBottomNode}
-          {backDialog}
+          {fixedBottomNode()}
+          {backDialog()}
         </div>
       )
     }
