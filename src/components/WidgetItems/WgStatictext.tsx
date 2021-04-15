@@ -1,7 +1,8 @@
+import { defineComponent } from "vue"
 import { changeRem, formatStyle } from '@/utils/format/unit';
 import { jumpLink } from '@/utils/validate/link';
-import { defineComponent } from "vue"
-// import CustomPopup from './wg-popup'
+import { useWgList } from '@/composition/use-wglist'
+import CustomPopup from './WgPopup'
 
 export default defineComponent({
   props: {
@@ -11,20 +12,21 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const { wgData } = useWgList(props.item)
     const domStyle = {
-      backgroundColor: props.item.backgroundColor || '',
-      backgroundImage: props.item.backgroundImage ? `url(${props.item.backgroundImage})` : ''
+      backgroundColor: wgData.backgroundColor || '',
+      backgroundImage: wgData.backgroundImage ? `url(${wgData.backgroundImage})` : ''
     }
     const handleClick = () => {
-      if (props.item.link) return jumpLink(props.item.link)
-//      if (props.item.popupList?.length > 0) {
-//        emit('update:item', { ...props.item, showPopup: true })
-//      }
+      if (wgData.link) return jumpLink(wgData.link)
+      if (wgData.popupList?.length > 0) {
+        wgData.showPopup = true
+      }
     }
     return () => (
       <div class="wg-staticText clearfix" style={domStyle} >
-        <p style={formatStyle(props.item.style)} innerHTML={changeRem(props.item.value)} onClick={handleClick}></p>
-        {/* <CustomPopup list={props.item.popupList || []} vModel={props.item.showPopup} /> */}
+        <p style={formatStyle(wgData.style)} innerHTML={changeRem(wgData.value)} onClick={handleClick}></p>
+        <CustomPopup list={wgData.popupList || []} modelValue={wgData.showPopup} {...{ 'onUpdate:modelValue': (v: boolean) => wgData.showPopup = v }} />
       </div>
     )
   }
