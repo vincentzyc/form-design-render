@@ -1,4 +1,4 @@
-import { isObject, isArray } from '.';
+import { isArray, isObject } from "./validate/dataType";
 
 type ObjectIndex = Record<string, any>;
 
