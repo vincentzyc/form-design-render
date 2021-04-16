@@ -7,3 +7,6 @@ export function useExpose(apis: Record<string, any>) {
     Object.assign(instance.proxy, apis);
   }
 }
+
+// use
+// useExpose({ open, close })

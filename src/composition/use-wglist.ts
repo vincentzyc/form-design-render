@@ -20,3 +20,7 @@ export function useWgList(item: Record<string, any>): Record<string, any> {
     }
   }
 }
+
+// use 
+// import { useWgList } from '@/composition/use-wglist'
+// const { wgData } = useWgList(props.item)
