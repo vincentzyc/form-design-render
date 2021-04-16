@@ -3,6 +3,7 @@ import RenderPage from "@/components/RenderPage";
 import { useStore } from "vuex"
 import { getSessionStorage, setSessionStorage } from "./utils/storage";
 import { postMsgoOrigin, postMsgoUrl } from "./api";
+import '@/assets/css/widget.styl';
 import '@/assets/css/themes.styl';
 import { formatStyle } from "./utils/format/unit";
 import { initScript } from "./utils/dom";
