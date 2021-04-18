@@ -1,11 +1,11 @@
 import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "vue"
 
 // import WgPhone from "./wg-phone"
-// import WgInput from "./wg-input"
+import WgInput from "./WgInput"
 // import WgCheckbox from "./wg-checkbox"
 // import WgSelect from "./wg-select"
 // import WgSwitch from "./wg-switch"
-// import WgDate from "./wg-date"
+import WgDatePicker from "./WgDatePicker"
 import WgImgShow from "./WgImgShow"
 import WgStaticText from "./WgStaticText"
 // import WgButton from "./WgButton"
@@ -25,7 +25,9 @@ export default defineComponent({
     WgImgShow: WgImgShow,
     WgVideoPlay: WgVideoPlay,
     WgStaticText: WgStaticText,
-    WgSplitLine: WgSplitLine
+    WgSplitLine: WgSplitLine,
+    WgInput: WgInput,
+    WgDatePicker: WgDatePicker
   },
   props: {
     item: {
@@ -33,21 +35,13 @@ export default defineComponent({
       required: true
     }
   },
-  setup(props, { emit }) {
-    const test = () => {
-      emit('update:item', {
-        ...props.item,
-        showPopup: true
-      })
-    }
+  setup(props) {
     return () => {
       const Widget: any = resolveDynamicComponent('Wg' + props.item.type)
 
       return (
         <div class="widget-view">
-          <p onClick={test}>{JSON.stringify(props.item)}</p>
           <Widget item={props.item} />
-          {/* {...{ 'onUpdate:modelValue': onInput }} */}
         </div>
       )
     }
