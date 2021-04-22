@@ -54,11 +54,6 @@ export default {
             onCancel={closePicker}
             onConfirm={onConfirm}
           />
-          {/* <Picker
-            columns={wgData.options}
-            {...{ 'onCancel': closePicker }}
-            {...{ 'onConfirm': onConfirm }}
-          /> */}
         </van-popup>
       </div>
     )
