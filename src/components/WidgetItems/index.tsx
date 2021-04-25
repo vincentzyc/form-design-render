@@ -3,8 +3,8 @@ import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "
 // import WgPhone from "./wg-phone"
 import WgInput from "./WgInput"
 // import WgCheckbox from "./wg-checkbox"
-// import WgSelect from "./wg-select"
-// import WgSwitch from "./wg-switch"
+import WgSelect from "./WgSelect"
+import WgSwitch from "./WgSwitch"
 import WgDatePicker from "./WgDatePicker"
 import WgImgShow from "./WgImgShow"
 import WgStaticText from "./WgStaticText"
@@ -27,7 +27,9 @@ export default defineComponent({
     WgStaticText: WgStaticText,
     WgSplitLine: WgSplitLine,
     WgInput: WgInput,
-    WgDatePicker: WgDatePicker
+    WgDatePicker: WgDatePicker,
+    WgSwitch: WgSwitch,
+    WgSelect: WgSelect
   },
   props: {
     item: {
