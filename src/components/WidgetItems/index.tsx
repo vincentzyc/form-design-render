@@ -15,21 +15,22 @@ import WgSplitLine from "./WgSplitLine"
 // import WgAgreement from './wg-agreement'
 // import WgMarqueeSingle from './wg-marquee-single'
 import WgVideoPlay from './WgVideoPlay'
-// import WgRandomCode from './wg-random-code'
+import WgRandomCode from './WgRandomCode'
 
 
 export default defineComponent({
   name: "WidgetItems",
   components: {
     WgButton: defineAsyncComponent(() => import("./WgButton"/* webpackChunkName: "WgButton" */)),
-    WgImgShow: WgImgShow,
-    WgVideoPlay: WgVideoPlay,
-    WgStaticText: WgStaticText,
-    WgSplitLine: WgSplitLine,
-    WgInput: WgInput,
-    WgDatePicker: WgDatePicker,
-    WgSwitch: WgSwitch,
-    WgSelect: WgSelect
+    WgImgShow,
+    WgVideoPlay,
+    WgStaticText,
+    WgSplitLine,
+    WgInput,
+    WgDatePicker,
+    WgSwitch,
+    WgSelect,
+    WgRandomCode
   },
   props: {
     item: {
