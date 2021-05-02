@@ -17,7 +17,6 @@ import WgSplitLine from "./WgSplitLine"
 import WgVideoPlay from './WgVideoPlay'
 import WgRandomCode from './WgRandomCode'
 
-
 export default defineComponent({
   name: "WidgetItems",
   components: {
