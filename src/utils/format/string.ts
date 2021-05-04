@@ -5,7 +5,7 @@
  */
 export function textBr(text: string, sign: string = '\n'): string {
   let brstr = '';
-  let arr = text.split(sign);
+  const arr = text.split(sign);
   arr.forEach(v => {
     brstr += v + "</br>"
   })
