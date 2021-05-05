@@ -1,7 +1,7 @@
 // 弹框组件（支持iframe嵌入页面）
-import { textBr } from '@/utils/format/string';
-import { isLink } from '@/utils/validate/link';
-import { defineComponent, ref } from 'vue';
+import { textBr } from '@/utils/format/string'
+import { isLink } from '@/utils/validate/link'
+import { defineComponent, ref } from 'vue'
 import { useExpose } from "@/composition/use-expose"
 import './css/style.styl'
 

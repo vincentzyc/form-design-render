@@ -1,8 +1,9 @@
 import { defineComponent, ref } from 'vue'
-import { formatStyle } from '@/utils/format/unit';
-import { Checkbox } from 'vant';
+import { formatStyle } from '@/utils/format/unit'
+import { Checkbox } from 'vant'
 import AgreementPopup from './AgreementPopup'
-import { TitleText } from './types';
+import { TitleText } from './types'
+
 export default defineComponent({
   props: {
     item: {
