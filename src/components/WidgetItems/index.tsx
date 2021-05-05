@@ -12,7 +12,7 @@ import WgStaticText from "./WgStaticText"
 import WgSplitLine from "./WgSplitLine"
 // import WgWechat from './wg-wechat'
 // import WgMarquee from './wg-marquee'
-// import WgAgreement from './wg-agreement'
+import WgAgreement from './WgAgreement'
 // import WgMarqueeSingle from './wg-marquee-single'
 import WgVideoPlay from './WgVideoPlay'
 import WgRandomCode from './WgRandomCode'
@@ -29,7 +29,8 @@ export default defineComponent({
     WgDatePicker,
     WgSwitch,
     WgSelect,
-    WgRandomCode
+    WgRandomCode,
+    WgAgreement
   },
   props: {
     item: {
