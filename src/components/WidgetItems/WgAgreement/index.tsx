@@ -18,7 +18,7 @@ export default defineComponent({
     const getAgreementList = () => {
       return (
         <Checkbox v-model={props.item.value} style={formatStyle(props.item.style)} shape="square">
-          <p style={{ color: props.item.style.color }}>
+          <p style={{ margin: 0, color: props.item.style.color }}>
             <span>{props.item.tipText}</span>
             {props.item.titleTexts.map((titleText, key) => (
               <span key={key}>
@@ -36,9 +36,9 @@ export default defineComponent({
       )
     }
     return () => (
-      <div class="wg-agreement clearfix" id={props.item.key}>
+      <div class="wg-agreement clearfix wg-padding" id={props.item.key}>
         {getAgreementList()}
-        <AgreementPopup ref={elAgreement.value} />
+        <AgreementPopup ref={elAgreement} />
       </div>
     )
   }
