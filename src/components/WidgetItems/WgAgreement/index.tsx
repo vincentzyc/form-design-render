@@ -11,7 +11,7 @@ export default defineComponent({
   },
   setup(props) {
     const elAgreement = ref()
-    const openAgreement = (text, event) => {
+    const openAgreement = (text: string, event: MouseEvent) => {
       event.stopPropagation();
       elAgreement.value.open(text);
     }
@@ -20,7 +20,7 @@ export default defineComponent({
         <Checkbox v-model={props.item.value} style={formatStyle(props.item.style)} shape="square">
           <p style={{ margin: 0, color: props.item.style.color }}>
             <span>{props.item.tipText}</span>
-            {props.item.titleTexts.map((titleText, key) => (
+            {(props.item.titleTexts as TitleTexts).map((titleText, key) => (
               <span key={key}>
                 {key > 0 && <span>和</span>}
                 {titleText.title && (
