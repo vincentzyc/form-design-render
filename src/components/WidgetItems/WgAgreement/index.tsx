@@ -2,6 +2,7 @@ import { defineComponent, ref } from 'vue'
 import { formatStyle } from '@/utils/format/unit';
 import { Checkbox } from 'vant';
 import AgreementPopup from './AgreementPopup'
+import { TitleText } from './types';
 export default defineComponent({
   props: {
     item: {
@@ -20,7 +21,7 @@ export default defineComponent({
         <Checkbox v-model={props.item.value} style={formatStyle(props.item.style)} shape="square">
           <p style={{ margin: 0, color: props.item.style.color }}>
             <span>{props.item.tipText}</span>
-            {(props.item.titleTexts as TitleTexts).map((titleText, key) => (
+            {props.item.titleTexts.map((titleText: TitleText, key: number) => (
               <span key={key}>
                 {key > 0 && <span>和</span>}
                 {titleText.title && (
