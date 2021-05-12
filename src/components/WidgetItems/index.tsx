@@ -10,7 +10,7 @@ import WgImgShow from "./WgImgShow"
 import WgStaticText from "./WgStaticText"
 // import WgButton from "./WgButton"
 import WgSplitLine from "./WgSplitLine"
-// import WgWechat from './wg-wechat'
+import WgWechat from './WgWechat'
 // import WgMarquee from './wg-marquee'
 import WgAgreement from './WgAgreement'
 // import WgMarqueeSingle from './wg-marquee-single'
@@ -30,7 +30,8 @@ export default defineComponent({
     WgSwitch,
     WgSelect,
     WgRandomCode,
-    WgAgreement
+    WgAgreement,
+    WgWechat
   },
   props: {
     item: {
