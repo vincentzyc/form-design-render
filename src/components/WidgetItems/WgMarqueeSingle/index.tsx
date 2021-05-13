@@ -14,11 +14,13 @@ export default defineComponent({
       animateTimeId = ref(0),
       scrollTimeId = ref(0)
 
+    const scrollList = ref([])
+
     const getScroll = () => {
       const scrollStyle = formatStyle({ ...props.item.style, borderRadius: props.item.style.height })
       return (
         <ul class="scroll-wrapper" style={scrollStyle}>
-          {props.item.textList.map((text: ScrollItem, i: number) => (
+          {scrollList.value.map((text: ScrollItem, i: number) => (
             <li
               key={i}
               class={['flex', 'align-middle', 'scroll-item', { 'anim': animate.value && i === 0 }]}
@@ -39,8 +41,8 @@ export default defineComponent({
       clearTimeout(animateTimeId.value);
       animate.value = true;
       animateTimeId.value = setTimeout(() => {
-        props.item.textList.push(props.item.textList[0]);
-        props.item.textList.shift();
+        scrollList.value.push(scrollList.value[0]);
+        scrollList.value.shift();
         animate.value = false;
       }, 500);
     }
@@ -53,6 +55,7 @@ export default defineComponent({
     onMounted(async () => {
       await nextTick()
       setTimeout(() => {
+        scrollList.value = props.item.textList
         scrollTimeId.value = setInterval(scroll, props.item.durationTime * 1000);
       }, 10);
     })
