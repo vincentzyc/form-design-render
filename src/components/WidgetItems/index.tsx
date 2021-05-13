@@ -2,18 +2,17 @@ import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "
 
 // import WgPhone from "./wg-phone"
 import WgInput from "./WgInput"
-// import WgCheckbox from "./wg-checkbox"
+import WgCheckbox from "./WgCheckbox"
 import WgSelect from "./WgSelect"
 import WgSwitch from "./WgSwitch"
 import WgDatePicker from "./WgDatePicker"
 import WgImgShow from "./WgImgShow"
 import WgStaticText from "./WgStaticText"
-// import WgButton from "./WgButton"
 import WgSplitLine from "./WgSplitLine"
 import WgWechat from './WgWechat'
-// import WgMarquee from './wg-marquee'
+import WgMarquee from './WgMarquee'
 import WgAgreement from './WgAgreement'
-// import WgMarqueeSingle from './wg-marquee-single'
+import WgMarqueeSingle from './WgMarqueeSingle'
 import WgVideoPlay from './WgVideoPlay'
 import WgRandomCode from './WgRandomCode'
 
@@ -31,7 +30,10 @@ export default defineComponent({
     WgSelect,
     WgRandomCode,
     WgAgreement,
-    WgWechat
+    WgWechat,
+    WgCheckbox,
+    WgMarquee,
+    WgMarqueeSingle
   },
   props: {
     item: {
