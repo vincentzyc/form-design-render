@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import createCode from './random-code'
 import { changeRem, formatStyle } from "@/utils/format/unit";
-import { useWgList } from '@/composition/use-wglist';
+import { useWgForm } from '@/composition/use-wgform';
 
 export default defineComponent({
   props: {
@@ -11,7 +11,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgList(props.item)
+    const { wgData } = useWgForm(props.item)
 
     const directionClass = wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle';
     const getCode = () => {

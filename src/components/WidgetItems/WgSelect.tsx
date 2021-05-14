@@ -1,6 +1,6 @@
 import { Picker } from 'vant';
 import { changeRem } from "@/utils/format/unit"
-import { useWgList } from '@/composition/use-wglist';
+import { useWgForm } from '@/composition/use-wgform';
 import { ref } from 'vue';
 
 export default {
@@ -16,7 +16,7 @@ export default {
     }
   },
   setup(props) {
-    const { wgData } = useWgList(props.item)
+    const { wgData } = useWgForm(props.item)
     const showPicker = ref(false)
     const wrapClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle'];
 

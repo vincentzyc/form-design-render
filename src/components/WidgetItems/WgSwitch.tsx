@@ -1,4 +1,4 @@
-import { useWgList } from "@/composition/use-wglist"
+import { useWgForm } from "@/composition/use-wgform"
 import { changeRem } from "@/utils/format/unit"
 import { defineComponent } from "vue"
 
@@ -10,7 +10,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgList(props.item)
+    const { wgData } = useWgForm(props.item)
     const wrapClass = ['wg-item', 'wg-switch', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']
     return () => (
       <div class={wrapClass} style={wgData.style}>

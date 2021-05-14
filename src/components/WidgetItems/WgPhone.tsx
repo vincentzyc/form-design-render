@@ -1,5 +1,5 @@
 import { defineComponent } from "vue"
-import { useWgList } from '@/composition/use-wglist'
+import { useWgForm } from '@/composition/use-wgform'
 import { changeRem, formatStyle } from "@/utils/format/unit"
 import ValidateCodeBtn from '@/components/base/ValidateCodeBtn'
 
@@ -11,7 +11,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgList(props.item)
+    const { wgData } = useWgForm(props.item)
 
     const getPhone = () => {
       const phoneClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']

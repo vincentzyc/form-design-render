@@ -1,7 +1,7 @@
 import { computed } from "vue"
 import { useStore } from 'vuex';
 
-export function useWgList(item: Record<string, any>): Record<string, any> {
+export function useWgForm(item: Record<string, any>): Record<string, any> {
   const store = useStore()
   const wgList = computed(() => store.state.wgList)
   const index = wgList.value.findIndex((v: { key: string }) => v.key === item.key)
@@ -22,5 +22,5 @@ export function useWgList(item: Record<string, any>): Record<string, any> {
 }
 
 // use 
-// import { useWgList } from '@/composition/use-wglist'
-// const { wgData } = useWgList(props.item)
+// import { useWgForm } from '@/composition/use-wglist'
+// const { wgData } = useWgForm(props.item)

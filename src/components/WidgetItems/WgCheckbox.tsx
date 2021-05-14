@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { changeRem, formatStyle } from "@/utils/format/unit";
-import { useWgList } from '@/composition/use-wglist';
+import { useWgForm } from '@/composition/use-wgform';
 
 export default defineComponent({
   props: {
@@ -10,7 +10,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgList(props.item)
+    const { wgData } = useWgForm(props.item)
 
     const wrapClass = ['wg-item', 'flex-wrap', 'wg-checkbox', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle'];
     return () => (
