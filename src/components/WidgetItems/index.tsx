@@ -1,6 +1,6 @@
 import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "vue"
 
-// import WgPhone from "./wg-phone"
+import WgPhone from "./WgPhone"
 import WgInput from "./WgInput"
 import WgCheckbox from "./WgCheckbox"
 import WgSelect from "./WgSelect"
@@ -33,7 +33,8 @@ export default defineComponent({
     WgWechat,
     WgCheckbox,
     WgMarquee,
-    WgMarqueeSingle
+    WgMarqueeSingle,
+    WgPhone
   },
   props: {
     item: {
