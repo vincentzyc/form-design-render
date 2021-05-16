@@ -4,9 +4,13 @@ export default createStore({
   state: {
     pageData: "",
     wgList: [],
+    formData: {},
     valiPopupDate: false
   },
   mutations: {
+    setFormData(state, payload) {
+      state.formData = payload;
+    },
     setPageData(state, payload) {
       state.pageData = payload;
     },
