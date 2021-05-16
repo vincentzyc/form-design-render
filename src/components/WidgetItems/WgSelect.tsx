@@ -1,22 +1,18 @@
+import { defineComponent } from 'vue'
 import { Picker } from 'vant';
 import { changeRem } from "@/utils/format/unit"
 import { useWgForm } from '@/composition/use-wgform';
 import { ref } from 'vue';
 
-export default {
+export default defineComponent({
   props: {
     item: {
       type: Object,
       required: true
     }
   },
-  data() {
-    return {
-      showPicker: false
-    }
-  },
   setup(props) {
-    const { wgData } = useWgForm(props.item)
+    const { wgData, formData } = useWgForm(props.item)
     const showPicker = ref(false)
     const wrapClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle'];
 
@@ -27,7 +23,7 @@ export default {
       showPicker.value = false
     }
     const onConfirm = (value: string) => {
-      wgData.value = value;
+      formData[wgData.apiKey] = value
       closePicker()
     }
 
@@ -42,7 +38,7 @@ export default {
           <input
             disabled
             id={wgData.key}
-            v-model={wgData.value}
+            v-model={formData[wgData.apiKey]}
             placeholder={wgData.placeholder}
             class="wg-input" />
           <i class="cubeic-select"></i>
@@ -58,4 +54,4 @@ export default {
       </div>
     )
   }
-}
+})
