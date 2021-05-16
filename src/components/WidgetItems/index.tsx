@@ -43,14 +43,11 @@ export default defineComponent({
     }
   },
   setup(props) {
-    return () => {
-      const Widget: any = resolveDynamicComponent('Wg' + props.item.type)
-
-      return (
-        <div class="widget-view">
-          <Widget item={props.item} />
-        </div>
-      )
-    }
+    const Widget: any = resolveDynamicComponent('Wg' + props.item.type)
+    return () => (
+      <div class="widget-view">
+        <Widget item={props.item} />
+      </div>
+    )
   }
 })
