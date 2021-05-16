@@ -10,7 +10,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgForm(props.item)
+    const { wgData, formData } = useWgForm(props.item)
     const wrapClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']
     return () => (
       <div class={wrapClass} style={wgData.style}>
@@ -20,7 +20,7 @@ export default defineComponent({
           style={{ width: changeRem(wgData.label.labelWidth) }}
         >{wgData.label.labelTitle}</div>
         <div class="flex-auto">
-          <input v-model={wgData.value} placeholder={wgData.placeholder} class="wg-input" id={wgData.key} />
+          <input v-model={formData[wgData.apiKey]} placeholder={wgData.placeholder} class="wg-input" id={wgData.key} />
         </div>
       </div>
     )
