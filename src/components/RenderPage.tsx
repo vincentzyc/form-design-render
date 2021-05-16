@@ -15,6 +15,7 @@ export default defineComponent({
     const backAlert = ref(false)
 
     const pageData = computed(() => store.state.pageData)
+    const formData = computed(() => store.state.formData)
 
     const list = pageData.value.list
     const fixedTop = pageData.value.fixedTop
@@ -115,6 +116,7 @@ export default defineComponent({
     return () => {
       return (
         <div class="widget-list">
+          <p>{JSON.stringify(formData.value)}</p>
           {fixedTopNode()}
           {fixedCustomNode()}
           {listNode()}
