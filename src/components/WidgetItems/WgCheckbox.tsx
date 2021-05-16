@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { changeRem, formatStyle } from "@/utils/format/unit";
-import { useWgForm } from '@/composition/use-wgform';
+import { useWgForm } from '@/composition/use-wgform'
 
 export default defineComponent({
   props: {
@@ -10,7 +10,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgForm(props.item)
+    const { wgData, formData } = useWgForm(props.item)
 
     const wrapClass = ['wg-item', 'flex-wrap', 'wg-checkbox', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle'];
     return () => (
@@ -23,7 +23,7 @@ export default defineComponent({
                 class="wg-checkbox-input"
                 type={wgData.isRadio ? 'radio' : 'checkbox'}
                 value={optionsItem}
-                v-model={wgData.value}
+                v-model={formData[wgData.apiKey]}
                 style="display:none"
               />
               <span>{optionsItem}</span>
