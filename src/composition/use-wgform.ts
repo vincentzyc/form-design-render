@@ -21,6 +21,8 @@ export function useWgForm(item: Record<string, any>): Record<string, any> {
   }
 }
 
+export default useWgForm
+
 // use 
-// import { useWgForm } from '@/composition/use-wglist'
+// import { useWgForm } from '@/composition/use-wgform'
 // const { wgData } = useWgForm(props.item)
