@@ -13,9 +13,9 @@ export default defineComponent({
     },
   },
   setup(props) {
-    let codetxt = ref("获取验证码")
-    let time = ref()
-    let disbtn = ref(false)
+    const codetxt = ref("获取验证码")
+    const time = ref()
+    const disbtn = ref(false)
 
     /**
      * 倒计时
@@ -23,8 +23,8 @@ export default defineComponent({
      * @param {Function} tickFunc  每秒回调
      * @param {Function} done     结束后回调
      */
-    const countDown = (time: number, tickFunc: Function, done: Function) => {
-      let tick = () => {
+    const countDown = (time: number, tickFunc: (time: number) => void, done: () => void) => {
+      const tick = () => {
         setTimeout(() => {
           if (time > 0) {
             time--;
