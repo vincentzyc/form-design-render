@@ -1,4 +1,4 @@
-import { computed, reactive } from "vue"
+import { computed } from "vue"
 import { useStore } from 'vuex';
 
 export function useWgForm(item: Record<string, any>): Record<string, any> {
@@ -9,7 +9,7 @@ export function useWgForm(item: Record<string, any>): Record<string, any> {
   }
   return {
     formData: formData.value,
-    wgData: reactive(item)
+    wgData: item
   }
   // const store = useStore()
   // const wgList = computed(() => store.state.wgList)
