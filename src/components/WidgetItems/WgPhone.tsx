@@ -11,7 +11,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgForm(props.item)
+    const { wgData, formData } = useWgForm(props.item)
 
     const getPhone = () => {
       const phoneClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']
@@ -28,7 +28,7 @@ export default defineComponent({
               class="wg-input"
               type="tel"
               maxlength={11}
-              v-model={[wgData.value, ['trim']]}
+              v-model={[formData[wgData.apiKey], ['trim']]}
               placeholder={wgData.placeholder}
             />
           </div>
@@ -45,7 +45,7 @@ export default defineComponent({
             style={{ width: changeRem(wgData.label.labelwidth) }}
           >验证码</div>
           <div class="flex flex-auto flex-center">
-            <input placeholder="验证码" type="tel" maxlength={6} v-model={[wgData.codeValue, ['trim']]} class="wg-input flex-auto" />
+            <input placeholder="验证码" type="tel" maxlength={6} v-model={[formData[wgData.codeKey], ['trim']]} class="wg-input flex-auto" />
             <ValidateCodeBtn phone={wgData.value} style={formatStyle(wgData.style.btnStyle)} />
           </div>
         </div>
