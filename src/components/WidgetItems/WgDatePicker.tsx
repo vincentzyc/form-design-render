@@ -11,10 +11,10 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgForm(props.item)
+    const { wgData, formData } = useWgForm(props.item)
 
     const minDate = new Date(1920, 0, 1)
-    const maxDate = new Date(2080, 12, 31)
+    const maxDate = new Date(2120, 12, 31)
 
     const showPicker = ref(false)
     const currentDate = ref(new Date())
@@ -55,7 +55,7 @@ export default defineComponent({
             <input
               disabled
               id={wgData.key}
-              v-model={wgData.value}
+              v-model={formData[wgData.apiKey]}
               placeholder={wgData.placeholder}
               class="wg-input" />
           </div>
