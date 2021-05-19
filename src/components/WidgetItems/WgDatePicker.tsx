@@ -35,7 +35,7 @@ export default defineComponent({
     }
 
     const confirm = (value: Date) => {
-      wgData.value = formatDate(value);
+      formData[wgData.apiKey] = formatDate(value);
       close()
     }
 
