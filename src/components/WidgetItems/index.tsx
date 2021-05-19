@@ -15,6 +15,8 @@ import WgAgreement from './WgAgreement'
 import WgMarqueeSingle from './WgMarqueeSingle'
 import WgVideoPlay from './WgVideoPlay'
 import WgRandomCode from './WgRandomCode'
+import WgHPicker from './HPicker'
+
 
 export default defineComponent({
   name: "WidgetItems",
@@ -34,7 +36,8 @@ export default defineComponent({
     WgCheckbox,
     WgMarquee,
     WgMarqueeSingle,
-    WgPhone
+    WgPhone,
+    WgHPicker
   },
   props: {
     item: {
