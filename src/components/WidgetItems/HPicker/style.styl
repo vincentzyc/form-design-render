@@ -1,0 +1,34 @@
+.horizontal-container {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 36px;
+  border-radius: 20px;
+  overflow: hidden;
+
+  .scroll-wrapper {
+    position: relative;
+    white-space: nowrap;
+    height: 36px;
+    line-height: 36px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    .scroll-content {
+      display: inline-block;
+    }
+
+    .scroll-item {
+      height: 100%;
+      text-align: center;
+      display: inline-block;
+      padding: 0;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #707274;
+      box-sizing: border-box;
+      backface-visibility: hidden;
+    }
+  }
+}
