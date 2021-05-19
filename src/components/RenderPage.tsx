@@ -116,7 +116,7 @@ export default defineComponent({
     return () => {
       return (
         <div class="widget-list">
-          <p>{JSON.stringify(formData.value)}</p>
+          <p style="word-break: break-all;">{JSON.stringify(formData.value)}</p>
           {fixedTopNode()}
           {fixedCustomNode()}
           {listNode()}
