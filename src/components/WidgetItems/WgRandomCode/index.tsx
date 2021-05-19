@@ -11,7 +11,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData } = useWgForm(props.item)
+    const { wgData, formData } = useWgForm(props.item)
 
     const directionClass = wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle';
     const getCode = () => {
@@ -29,7 +29,7 @@ export default defineComponent({
             style={{ width: changeRem(wgData.label.labelWidth) }}
           >{wgData.label.labelTitle}</div>
           <div class="flex flex-auto align-middle">
-            <input placeholder={wgData.placeholder} type="text" maxlength={4} v-model={[wgData.value, ['trim']]} class="wg-input flex-auto" />
+            <input placeholder={wgData.placeholder} type="text" maxlength={4} v-model={[formData[wgData.apiKey], ['trim']]} class="wg-input flex-auto" />
             <button class="random-code flex-none" style={formatStyle(wgData.style.btnStyle)} onClick={getCode}>{wgData.codeValue}</button>
           </div>
         </div>
