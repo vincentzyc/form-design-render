@@ -1,5 +1,12 @@
 /*reset css*/
 @charset "utf-8";
+audio, body, div, footer, header, html, iframe, input, li, menu, nav, ol, p, span, ul, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: 400;
+	vertical-align: baseline;
+}
 
 *, *::before, *::after {
 	-webkit-tap-highlight-color: transparent;
@@ -17,10 +24,6 @@ a {
 }
 li {
 	list-style: none;
-}
-h1, h2, h3, h4, h5, h6 {
-	font-size: 100%;
-	font-weight: 500
 }
 .container {
 	position: relative;
