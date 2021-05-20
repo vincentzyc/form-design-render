@@ -3,6 +3,7 @@ import App from './App'
 import store from './store'
 import Axios from './plugins/axios'
 import '@/assets/css/base.css';
+import '@/assets/css/main.css';
 
 import { Popup, Lazyload, Dialog, Toast } from 'vant';
 
