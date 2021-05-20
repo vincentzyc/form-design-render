@@ -12,7 +12,7 @@ type PosType = {
 
 export default defineComponent({
   props: {
-    value: {
+    modelValue: {
       type: [String, Number],
       default: '',
     },
@@ -45,6 +45,7 @@ export default defineComponent({
       default: 0
     }
   },
+  emits: ['update:modelValue'],
   setup(props, { emit, slots }) {
     let bs: any = null
     const wgWrapper = ref(),
@@ -79,7 +80,7 @@ export default defineComponent({
       currentIndex.value = Math.floor(scrollNewX / props.itemWidth);
       scrollX.value = -currentIndex.value * props.itemWidth;
       bs.scrollTo(scrollX.value, 0, 100);
-      emit('input', currentValue.value);
+      emit('update:modelValue', currentValue.value)
     }
     const touchEnd = (pos: PosType) => {
       draging.value = false;
@@ -107,7 +108,7 @@ export default defineComponent({
       if (props.defaultIndex > 0) {
         currentIndex.value = props.defaultIndex;
         bs.scrollTo(-currentIndex.value * props.itemWidth, 0);
-        emit('input', currentValue.value);
+        emit('update:modelValue', currentValue.value)
       }
     }
 
@@ -116,7 +117,7 @@ export default defineComponent({
       currentIndex.value = key;
       scrollX.value = -currentIndex.value * props.itemWidth;
       bs.scrollTo(scrollX.value, 0, 150);
-      emit('input', currentValue.value);
+      emit('update:modelValue', currentValue.value)
     }
 
     onMounted(async () => {
