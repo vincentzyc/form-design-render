@@ -41,7 +41,7 @@ export default defineComponent({
           {[...props.item.textList, ...props.item.textList].map((texts, key) => (
             <p key={key} class="flex space-around" style={{ width: marqueeWidth.value + 'px', margin: 0 }}
             >
-              {texts.split(/\s+/).map((text, i) => (
+              {texts.split(/\s+/).map((text: string, i: number) => (
                 <span key={i}>{text}</span>
               ))}
             </p>
