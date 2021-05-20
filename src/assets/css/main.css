@@ -33,12 +33,6 @@
 	opacity: 0;
 }
 
-/* 重置cube-ui样式 */
-.cube-popup{
-  z-index: 1300 !important;
-}
-/* 重置cube-ui样式 end*/
-
 /*  动画类 */
 
 .animte-streak {
