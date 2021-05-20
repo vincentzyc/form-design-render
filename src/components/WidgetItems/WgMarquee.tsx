@@ -37,9 +37,9 @@ export default defineComponent({
     }
     const geTextDom = () => {
       return (
-        <div class={inlineClass.value} style={inlineStyle.value}>{
-          [...props.item.textList, ...props.item.textList].map((texts, key) => (
-            <p key={key} class="flex space-around" style={{ width: marqueeWidth.value + 'px' }}
+        <div class={inlineClass.value} style={inlineStyle.value}>
+          {[...props.item.textList, ...props.item.textList].map((texts, key) => (
+            <p key={key} class="flex space-around" style={{ width: marqueeWidth.value + 'px', margin: 0 }}
             >
               {texts.split(/\s+/).map((text, i) => (
                 <span key={i}>{text}</span>
@@ -53,12 +53,12 @@ export default defineComponent({
       await nextTick()
       setTimeout(() => {
         marqueeWidth.value = wgMarquee.value.offsetWidth || wgMarquee.value.clientWidth;
-      }, 10);
+      }, 100);
     })
 
     return () => (
       <div
-        ref="wgMarquee"
+        ref={wgMarquee}
         class={wrapClass}
         style={formatStyle(props.item.style)}
       >
