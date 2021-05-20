@@ -1,10 +1,14 @@
 import { computed, defineComponent, nextTick, onMounted, ref } from "vue"
+import BScroll from '@better-scroll/core'
 import './style.styl'
-// import { changeRem } from "@/utils/format/unit"
-// import { useWgForm } from '@/composition/use-wgform'
 
 const ITEM_WIDTH = 48;
 const SHOW_NUMBER = 5;
+
+type PosType = {
+  x: number,
+  y: number
+}
 
 export default defineComponent({
   props: {
@@ -52,48 +56,36 @@ export default defineComponent({
     const currentValue = computed(() => props.data[currentIndex.value])
 
     const init = () => {
-      bs = new window.BScroll(wgWrapper.value, {
+      bs = new BScroll(wgWrapper.value, {
         scrollX: true,
+        scrollY: false,
+        observeDOM: true,
+        click: true,
         probeType: 3 // listening scroll event
       })
 
-      bs.on('touchEnd', pos => touchEnd(pos))
+      bs.on('touchEnd', (pos: PosType) => touchEnd(pos))
 
-      bs.on('scrollEnd', pos => scrollEnd(pos))
+      bs.on('scrollEnd', (pos: PosType) => scrollEnd(pos))
 
       bs.on('beforeScrollStart', () => beforeScrollStart())
 
       bs.on('scrollCancel', () => scrollCancel())
 
       setDefaultIndex()
-
-      // bs.on('scrollStart', () => {
-      //   console.log('scrollStart-')
-      // })
-      // bs.on('scroll', ({ x }) => {
-      //   console.log('scrolling-' + x)
-      // })
-      // bs.on('scrollEnd', () => {
-      //   console.log('scrollingEnd')
-      // })
     }
-    const setCurrentIndex = (x) => {
+    const setCurrentIndex = (x: number) => {
       const scrollNewX = Math.abs(x) + props.itemWidth / 2;
       currentIndex.value = Math.floor(scrollNewX / props.itemWidth);
-
-      console.log(currentIndex.value * props.itemWidth);
-
       scrollX.value = -currentIndex.value * props.itemWidth;
-
-      bs.scrollTo(scrollX, 0, 200);
-
+      bs.scrollTo(scrollX.value, 0, 100);
       emit('input', currentValue.value);
     }
-    const touchEnd = (pos) => {
+    const touchEnd = (pos: PosType) => {
       draging.value = false;
       console.log('鼠标/手指离开', pos);
     }
-    const scrollEnd = (pos) => {
+    const scrollEnd = (pos: PosType) => {
       clearTimeout(scrollEndTimer.value);
       scrollEndTimer.value = setTimeout(() => {
         if (draging.value || scrollX.value === pos.x) return false;
@@ -119,7 +111,7 @@ export default defineComponent({
       }
     }
 
-    const handClick = (key) => {
+    const handClick = (key: number) => {
       if (currentIndex.value === key) return;
       currentIndex.value = key;
       scrollX.value = -currentIndex.value * props.itemWidth;
@@ -133,9 +125,9 @@ export default defineComponent({
     })
 
     return () => (
-      <div class="horizontal-container" style={{ width: props.itemWidth * props.showNumber + 'px' }}>
-        <div class="scroll-wrapper" ref={wgWrapper} style={{ width: (props.data.length + props.showNumber - 1) * props.itemWidth + 'px' }}>
-          <div class="scroll-content">
+      <div class="horizontal-container" ref={wgWrapper} style={{ width: props.itemWidth * props.showNumber + 'px' }}>
+        <div class="scroll-wrapper">
+          <div class="scroll-content" style={{ width: (props.data.length + props.showNumber - 1) * props.itemWidth + 'px' }}>
             <div class="scroll-item" style={{ width: props.itemWidth * (props.showNumber - 1) / 2 + 'px' }}></div>
             {props.data.map((item, key) => (
               <div

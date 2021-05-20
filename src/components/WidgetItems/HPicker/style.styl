@@ -1,20 +1,23 @@
 .horizontal-container {
+  position: relative;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 36px;
   border-radius: 20px;
+  height: 36px;
+  line-height: 36px;
   overflow: hidden;
+  margin: 0 auto;
 
   .scroll-wrapper {
     position: relative;
-    white-space: nowrap;
-    height: 36px;
-    line-height: 36px;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+    display: inline-block;
+    z-index: 1;
 
     .scroll-content {
-      display: inline-block;
+      height: 36px;
+      line-height: 36px;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
     }
 
     .scroll-item {
