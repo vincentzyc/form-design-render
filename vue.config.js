@@ -8,6 +8,7 @@ module.exports = {
     externals: process.env.NODE_ENV === 'production' ? {
       "vue": "Vue",
       "vuex": "Vuex",
+      "BScroll": "BScroll"
     } : {}
   },
 
