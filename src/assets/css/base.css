@@ -1,6 +1,6 @@
 /*reset css*/
 @charset "utf-8";
-audio, body, div, footer, header, html, iframe, input, li, menu, nav, ol, p, span, ul, video {
+audio, body, div, footer, header, html, iframe, img, input, li, menu, nav, ol, p, span, ul, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
