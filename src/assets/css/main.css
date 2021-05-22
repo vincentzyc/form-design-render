@@ -25,13 +25,6 @@
 .col-12 {
 	width: 100%;
 }
-.fade-enter-active, .fade-leave-active, .slide-left-enter-active, .slide-left-leave-active, .slide-right-enter-active, .slide-right-leave-active {
-	transition: 0.3s;
-}
-
-.fade-enter, .fade-leave-active {
-	opacity: 0;
-}
 
 /*  动画类 */
 
