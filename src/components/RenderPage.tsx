@@ -63,21 +63,21 @@ export default defineComponent({
     }
 
     const fixedTopNode = () => fixedTop.length > 0 ?
-      <Transition name="fade">
+      <Transition name="van-fade">
         <div v-show={showFixedTop.value} class="wg-fixed-top" style="max-width:640px">
           {(fixedTop as Record<string, any>[]).map(ftItem => <WidgetItems item={ftItem} key={ftItem.key} />)}
         </div>
       </Transition> : null
 
     const fixedCustomNode = () => fixedCustom.length > 0 ?
-      <Transition name="fade">
+      <Transition name="van-fade">
         <div ref="fixedCustom" class="wg-fixed-custom" style="max-width:640px">
           {(fixedCustom as Record<string, any>[]).map(fcItem => <WidgetItems item={fcItem} key={fcItem.key} class="fixed-item" style={fixedCustomStyle(fcItem)} />)}
         </div>
       </Transition> : null
 
     const fixedBottomNode = () => fixedBottom.length > 0 ?
-      <Transition name="fade">
+      <Transition name="van-fade">
         <div v-show={showFixedBottom.value} class="wg-fixed-bottom" style="max-width:640px">
           {(fixedBottom as Record<string, any>[]).map(fbItem => <WidgetItems item={fbItem} key={fbItem.key} />)}
         </div>
