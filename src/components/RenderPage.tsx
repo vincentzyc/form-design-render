@@ -1,4 +1,4 @@
-import { computed, defineComponent, ref,Transition } from "vue"
+import { computed, defineComponent, ref, Transition } from "vue"
 import WidgetItems from "@/components/WidgetItems";
 import '@/assets/css/widget.styl';
 import { formatStyle } from "@/utils/format/unit";
@@ -113,17 +113,15 @@ export default defineComponent({
     showFixed()
     if (isHijack.value) hijackBack()
 
-    return () => {
-      return (
-        <div class="widget-list">
-          <p style="word-break: break-all;">{JSON.stringify(formData.value)}</p>
-          {fixedTopNode()}
-          {fixedCustomNode()}
-          {listNode()}
-          {fixedBottomNode()}
-          {backDialog()}
-        </div>
-      )
-    }
+    return () => (
+      <div class="widget-list">
+        <p style="word-break: break-all;">{JSON.stringify(formData.value)}</p>
+        {fixedTopNode()}
+        {fixedCustomNode()}
+        {listNode()}
+        {fixedBottomNode()}
+        {backDialog()}
+      </div>
+    )
   }
 })
