@@ -20,7 +20,7 @@ export default defineComponent({
           <div
             v-show={wgData.showLabel}
             class="wg-title flex-none"
-            style={{ width: changeRem(wgData.label.labelwidth) }}
+            style={{ width: changeRem(wgData.label.labelWidth) }}
           >{wgData.label.labelTitle}</div>
           <div class="flex-auto">
             <input
@@ -42,7 +42,7 @@ export default defineComponent({
           <div
             v-show={wgData.showLabel}
             class="wg-title flex-none"
-            style={{ width: changeRem(wgData.label.labelwidth) }}
+            style={{ width: changeRem(wgData.label.labelWidth) }}
           >验证码</div>
           <div class="flex flex-auto flex-center">
             <input placeholder="验证码" type="tel" maxlength={6} v-model={[formData[wgData.codeKey], ['trim']]} class="wg-input flex-auto" />
@@ -54,6 +54,7 @@ export default defineComponent({
 
     return () => (
       <div class="wg-phone" style={formatStyle(wgData.style)}>
+        <p>{JSON.stringify(wgData)}</p>
         {getPhone()}
         {getValidateCode()}
       </div>
