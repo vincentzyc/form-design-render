@@ -39,7 +39,7 @@ export default defineComponent({
       close()
     }
 
-    const wrapClass = ['wg-item wg-padding', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']
+    const wrapClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']
     return () => (
       <div>
         <div

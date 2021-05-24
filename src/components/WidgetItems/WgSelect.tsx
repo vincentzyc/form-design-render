@@ -32,7 +32,7 @@ export default defineComponent({
         <div
           class="wg-title"
           v-show={wgData.showLabel}
-          style={{ width: changeRem(wgData.label.labelwidth) }}
+          style={{ width: changeRem(wgData.label.labelWidth) }}
         >{wgData.label.labelTitle}</div>
         <div class="flex-auto disabled-input" onClick={openPicker}>
           <input
