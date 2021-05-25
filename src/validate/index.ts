@@ -1,9 +1,8 @@
+import store from '@/store';
 import { scrollIntoView } from '@/utils/dom';
 import { openLoading, closeLoading } from '@/utils/loading';
-import { Dialog, Toast } from 'vant';
-import { useStore } from "vuex";
-
-const State = useStore()?.state
+import { Dialog } from 'vant';
+import { computed } from 'vue';
 
 const formData: Record<string, any> = {}
 
@@ -108,9 +107,11 @@ export function valiDate(obj: Record<string, any>): boolean | string {
 
 
 export function handleSubmit() {
-  const valiDateRes = State.valiPopupDate ? valiPopupDate(State.pageData.list) : valiAllDate(State.pageData.list);
-  if (valiDateRes !== true && valiDateRes !== false) return Toast(valiDateRes)
-  submit(formData);
+  const formData = computed(() => store.state.formData)
+  console.log(formData);
+  // const valiDateRes = State.valiPopupDate ? valiPopupDate(State.pageData.list) : valiAllDate(State.pageData.list);
+  // if (valiDateRes !== true && valiDateRes !== false) return Toast(valiDateRes)
+  submit(formData.value);
 }
 
 
