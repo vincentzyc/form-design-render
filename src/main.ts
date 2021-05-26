@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App'
-import store from './store'
+import { store, key } from './store'
 import Axios from './plugins/axios'
 import '@/assets/css/base.css';
 import '@/assets/css/main.css';
@@ -12,7 +12,7 @@ const app = createApp(App);
 app.config.globalProperties.$axios = Axios
 
 app
-  .use(store)
+  .use(store, key)
   .use(Popup)
   .use(Lazyload)
   .use(Dialog)
