@@ -4,30 +4,30 @@ import { useStore } from '@/store'
 export function useWgForm(item: Record<string, any>): Record<string, any> {
   const store = useStore()
   const formData = computed(() => store.state.formData)
-  if (item.apiKey) {
-    formData.value[item.apiKey] = item.value || ''
-  }
-  if (item.codeKey) {
-    formData.value[item.codeKey] = item.value || ''
-  }
+  const wgForms = computed(() => store.state.wgForms)
+  const index = wgForms.value.findIndex(v => v.key === item.key)
+  index > -1 ? wgForms.value.splice(index, 1, item) : wgForms.value.push(item)
+  if (item.apiKey) formData.value[item.apiKey] = item.value || ''
+  if (item.codeKey) formData.value[item.codeKey] = item.value || ''
   return {
     formData: formData.value,
+    wgForms: wgForms.value,
     wgData: item
   }
   // const store = useStore()
-  // const wgList = computed(() => store.state.wgList)
-  // const index = wgList.value.findIndex((v: { key: string }) => v.key === item.key)
+  // const wgForms = computed(() => store.state.wgForms)
+  // const index = wgForms.value.findIndex((v: { key: string }) => v.key === item.key)
   // if (index > -1) {
-  //   wgList.value.splice(index, 1, item)
+  //   wgForms.value.splice(index, 1, item)
   //   return {
-  //     wgData: wgList.value[index],
+  //     wgData: wgForms.value[index],
   //     wgIndex: index
   //   }
   // } else {
-  //   wgList.value.push(item)
-  //   const wgIndex = wgList.value.length - 1
+  //   wgForms.value.push(item)
+  //   const wgIndex = wgForms.value.length - 1
   //   return {
-  //     wgData: wgList.value[wgIndex],
+  //     wgData: wgForms.value[wgIndex],
   //     wgIndex: wgIndex
   //   }
   // }
