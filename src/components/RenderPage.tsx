@@ -3,7 +3,7 @@ import WidgetItems from "@/components/WidgetItems";
 import '@/assets/css/widget.styl';
 import { formatStyle } from "@/utils/format/unit";
 import { isLink } from "@/utils/validate/link";
-import { useStore } from "vuex"
+import { useStore } from '@/store'
 import { hasKey } from "@/utils";
 
 export default defineComponent({
@@ -17,12 +17,12 @@ export default defineComponent({
     const pageData = computed(() => store.state.pageData)
     const formData = computed(() => store.state.formData)
 
-    const list = pageData.value.list
-    const fixedTop = pageData.value.fixedTop
-    const fixedBottom = pageData.value.fixedBottom
-    const fixedCustom = pageData.value.fixedCustom
+    const list = pageData.value ? pageData.value.list : []
+    const fixedTop = pageData.value ? pageData.value.fixedTop : []
+    const fixedBottom = pageData.value ? pageData.value.fixedBottom : []
+    const fixedCustom = pageData.value ? pageData.value.fixedCustom : []
 
-    const isHijack = computed(() => pageData.value.hijackBack?.isHijack ? true : false)
+    const isHijack = computed(() => pageData.value?.hijackBack?.isHijack ? true : false)
 
     const fixedCustomStyle = (item: Record<string, any>) => {
       if (item.position) {
@@ -102,11 +102,11 @@ export default defineComponent({
         style="{'background-color': 'transparent'}"
       >
         <img
-          src={pageData.value.hijackBack?.alertImg}
+          src={pageData.value?.hijackBack?.alertImg}
           alt="监听到返回"
           class="flex"
           width="100%"
-          onClick={() => clickAlertImg(pageData.value.hijackBack?.alertLink)}
+          onClick={() => clickAlertImg(pageData.value?.hijackBack?.alertLink)}
         />
       </van-dialog> : null
 
