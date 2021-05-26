@@ -1,4 +1,4 @@
-import store from '@/store';
+import { store } from '@/store';
 import { scrollIntoView } from '@/utils/dom';
 import { openLoading, closeLoading } from '@/utils/loading';
 import { Dialog } from 'vant';
