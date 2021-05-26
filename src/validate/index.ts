@@ -1,10 +1,11 @@
 import { store } from '@/store';
 import { scrollIntoView } from '@/utils/dom';
 import { openLoading, closeLoading } from '@/utils/loading';
-import { Dialog } from 'vant';
+import { Dialog, Toast } from 'vant';
 import { computed } from 'vue';
 
-const formData: Record<string, any> = {}
+const formData = computed(() => store.state.formData)
+const wgForms = computed(() => store.state.wgForms)
 
 const ruleList = {
   phone: (value: string) => {
@@ -105,15 +106,29 @@ export function valiDate(obj: Record<string, any>): boolean | string {
   return ruleList[obj.apiKey](obj.value, obj)
 }
 
-
 export function handleSubmit() {
-  const formData = computed(() => store.state.formData)
-  console.log(formData);
-  // const valiDateRes = State.valiPopupDate ? valiPopupDate(State.pageData.list) : valiAllDate(State.pageData.list);
-  // if (valiDateRes !== true && valiDateRes !== false) return Toast(valiDateRes)
+  const valiDateRes = valiWgValue()
+  // console.log(wgForms.value);
+  if (valiDateRes !== true && valiDateRes !== false) return Toast(valiDateRes)
   submit(formData.value);
 }
 
+function valiWgValue(isScrollIntoView = true) {
+  for (const wg of wgForms.value) {
+    if (Object.prototype.hasOwnProperty.call(formData.value, wg.apiKey)) wg.value = formData.value[wg.apiKey]
+    if (Object.prototype.hasOwnProperty.call(formData.value, wg.codeKey)) wg.value = formData.value[wg.codeKey]
+    const res = valiDate(wg);
+    if (res === true) {
+      continue
+    }
+    if (isScrollIntoView) {
+      const dom = document.getElementById(wg.key)
+      if (dom) scrollIntoView(dom)
+    }
+    return res;
+  }
+  return true
+}
 
 export function submit(data: Record<string, any>) {
   console.log('提交数据', data);
@@ -126,44 +141,31 @@ export function submit(data: Record<string, any>) {
   }, 2500);
 }
 
-function valiPopupDate(list: Record<string, any>[]): boolean | string {
-  for (const item of list) {
-    if (Array.isArray(item.list) && item.list.length > 0) {
-      const res = valiPopupDate(item.list);
-      if (res !== true) return res;
-    }
-    if (Array.isArray(item.popupList) && item.popupList.length > 0 && item.showPopup) {
-      return valiAllDate(item.popupList, false);
-    }
-  }
-  return true;
-}
+// function valiAllDate(list: Record<string, any>[], isScrollIntoView = true): boolean | string {
+//   for (const item of list) {
+//     if (Array.isArray(item.list) && item.list.length > 0) {
+//       const res = valiAllDate(item.list, isScrollIntoView);
+//       if (res !== true) return res;
+//     }
+//     if (!item.apiKey) continue;
+//     const res = valiDate(item);
+//     if (res === true) {
+//       formatParam(item);
+//       continue
+//     }
+//     if (isScrollIntoView) {
+//       const dom = document.getElementById(item.key)
+//       if (dom) scrollIntoView(dom)
+//     }
+//     return res;
+//   }
+//   return true;
+// }
 
-function valiAllDate(list: Record<string, any>[], isScrollIntoView = true): boolean | string {
-  for (const item of list) {
-    if (Array.isArray(item.list) && item.list.length > 0) {
-      const res = valiAllDate(item.list, isScrollIntoView);
-      if (res !== true) return res;
-    }
-    if (!item.apiKey) continue;
-    const res = valiDate(item);
-    if (res === true) {
-      formatParam(item);
-      continue
-    }
-    if (isScrollIntoView) {
-      const dom = document.getElementById(item.key)
-      if (dom) scrollIntoView(dom)
-    }
-    return res;
-  }
-  return true;
-}
-
-function formatParam(item: Record<string, any>) {
-  if (!Object.prototype.hasOwnProperty.call(item, 'apiKey')) return;
-  if (item.type === 'phone' && item.showCode) {
-    formData[item.codeKey] = item.codeValue;
-  }
-  formData[item.apiKey] = item.value;
-}
+// function formatParam(item: Record<string, any>) {
+//   if (!Object.prototype.hasOwnProperty.call(item, 'apiKey')) return;
+//   if (item.type === 'phone' && item.showCode) {
+//     formData[item.codeKey] = item.codeValue;
+//   }
+//   formData[item.apiKey] = item.value;
+// }
