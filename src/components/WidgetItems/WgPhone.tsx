@@ -54,7 +54,6 @@ export default defineComponent({
 
     return () => (
       <div class="wg-phone" style={formatStyle(wgData.style)}>
-        <p>{JSON.stringify(wgData)}</p>
         {getPhone()}
         {getValidateCode()}
       </div>
