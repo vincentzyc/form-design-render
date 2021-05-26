@@ -1,11 +1,14 @@
-import { createStore } from 'vuex'
+import { InjectionKey } from 'vue'
+import { createStore, useStore as baseUseStore, Store } from 'vuex'
+import { StateType } from './types';
 
-export default createStore({
+export const key: InjectionKey<Store<StateType>> = Symbol()
+
+export const store = createStore<StateType>({
   state: {
-    pageData: "",
+    pageData: null,
     wgList: [],
     formData: {},
-    valiPopupDate: false
   },
   mutations: {
     setFormData(state, payload) {
@@ -16,9 +19,6 @@ export default createStore({
     },
     setWgList(state, payload) {
       state.wgList = payload
-    },
-    setValiPopupDate(state, payload) {
-      state.valiPopupDate = payload;
     }
   }
   // actions: {
@@ -26,3 +26,8 @@ export default createStore({
   // modules: {
   // }
 })
+
+// 定义自己的 `useStore` 组合式函数
+export function useStore() {
+  return baseUseStore(key)
+}
