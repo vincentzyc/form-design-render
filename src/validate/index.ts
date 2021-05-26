@@ -5,7 +5,8 @@ import { Dialog, Toast } from 'vant';
 import { computed } from 'vue';
 
 const formData = computed(() => store.state.formData)
-const wgForms = computed(() => store.state.wgForms)
+// const wgForms = computed(() => store.state.wgForms)
+const wgForms = store.state.wgForms
 
 const ruleList = {
   phone: (value: string) => {
@@ -108,15 +109,16 @@ export function valiDate(obj: Record<string, any>): boolean | string {
 
 export function handleSubmit() {
   const valiDateRes = valiWgValue()
-  // console.log(wgForms.value);
+  console.log(wgForms);
   if (valiDateRes !== true && valiDateRes !== false) return Toast(valiDateRes)
   submit(formData.value);
 }
 
 function valiWgValue(isScrollIntoView = true) {
-  for (const wg of wgForms.value) {
+  for (const wg of wgForms) {
     if (Object.prototype.hasOwnProperty.call(formData.value, wg.apiKey)) wg.value = formData.value[wg.apiKey]
-    if (Object.prototype.hasOwnProperty.call(formData.value, wg.codeKey)) wg.value = formData.value[wg.codeKey]
+    if (Object.prototype.hasOwnProperty.call(formData.value, wg.codeKey)) wg.codeValue = formData.value[wg.codeKey]
+    console.log(wg);
     const res = valiDate(wg);
     if (res === true) {
       continue
