@@ -1,11 +1,14 @@
 import { computed } from "vue"
-import { useStore } from 'vuex';
+import { useStore } from '@/store'
 
 export function useWgForm(item: Record<string, any>): Record<string, any> {
   const store = useStore()
   const formData = computed(() => store.state.formData)
   if (item.apiKey) {
     formData.value[item.apiKey] = item.value || ''
+  }
+  if (item.codeKey) {
+    formData.value[item.codeKey] = item.value || ''
   }
   return {
     formData: formData.value,
