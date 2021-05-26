@@ -1,6 +1,6 @@
 import { computed, defineComponent } from "vue"
 import RenderPage from "@/components/RenderPage";
-import { useStore } from "vuex"
+import { useStore } from '@/store'
 import { getSessionStorage, setSessionStorage } from "./utils/storage";
 import { postMsgoOrigin, postMsgoUrl } from "./api";
 import '@/assets/css/widget.styl';
