@@ -7,7 +7,7 @@ export const key: InjectionKey<Store<StateType>> = Symbol()
 export const store = createStore<StateType>({
   state: {
     pageData: null,
-    wgList: [],
+    wgForms: [],
     formData: {},
   },
   mutations: {
@@ -17,8 +17,8 @@ export const store = createStore<StateType>({
     setPageData(state, payload) {
       state.pageData = payload;
     },
-    setWgList(state, payload) {
-      state.wgList = payload
+    setWgForms(state, payload) {
+      state.wgForms = payload
     }
   }
   // actions: {
