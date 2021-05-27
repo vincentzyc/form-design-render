@@ -1,6 +1,7 @@
-import { defineComponent } from "vue"
+import { computed, defineComponent } from "vue"
 import { handleSubmit } from "@/validate/index"
 import { formatStyle } from "@/utils/format/unit";
+import { useStore } from '@/store'
 
 export default defineComponent({
   props: {
@@ -10,6 +11,10 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const store = useStore()
+    const formData = computed(() => store.state.formData)
+    const wgForms = computed(() => store.state.wgForms)
+
     const wrapStyle = () => {
       if (!props.item.animation) return formatStyle(props.item.style)
       return formatStyle({
@@ -32,7 +37,7 @@ export default defineComponent({
     const clickBtn = () => {
       switch (props.item.btnType) {
         case 'submit':
-          handleSubmit()
+          handleSubmit(formData.value, wgForms.value)
           break;
         default:
           break;
