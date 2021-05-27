@@ -1,4 +1,4 @@
-interface Window {
+// interface Window {
   // scroll2Bottom (): void
   // BScroll: any;
-}
+// }
