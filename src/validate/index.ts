@@ -1,12 +1,9 @@
-import { store } from '@/store';
 import { scrollIntoView } from '@/utils/dom';
 import { openLoading, closeLoading } from '@/utils/loading';
 import { Dialog, Toast } from 'vant';
-import { computed } from 'vue';
 
-const formData = computed(() => store.state.formData)
-// const wgForms = computed(() => store.state.wgForms)
-const wgForms = store.state.wgForms
+// const formData = store.state.formData
+// const wgForms = store.state.wgForms
 
 const ruleList = {
   phone: (value: string) => {
@@ -107,16 +104,16 @@ export function valiDate(obj: Record<string, any>): boolean | string {
   return ruleList[obj.apiKey](obj.value, obj)
 }
 
-export function handleSubmit() {
-  const valiDateRes = valiWgValue()
+export function handleSubmit(formData: Record<string, any>, wgForms: Record<string, any>[]) {
+  const valiDateRes = valiWgValue(formData, wgForms)
   if (valiDateRes !== true && valiDateRes !== false) return Toast(valiDateRes)
-  submit(formData.value);
+  submit(formData);
 }
 
-function valiWgValue(isScrollIntoView = true) {
+function valiWgValue(formData: Record<string, any>, wgForms: Record<string, any>[], isScrollIntoView = true) {
   for (const wg of wgForms) {
-    if (Object.prototype.hasOwnProperty.call(formData.value, wg.apiKey)) wg.value = formData.value[wg.apiKey]
-    if (Object.prototype.hasOwnProperty.call(formData.value, wg.codeKey)) wg.codeValue = formData.value[wg.codeKey]
+    if (Object.prototype.hasOwnProperty.call(formData, wg.apiKey)) wg.value = formData[wg.apiKey]
+    if (Object.prototype.hasOwnProperty.call(formData, wg.codeKey)) wg.codeValue = formData[wg.codeKey]
     const res = valiDate(wg);
     if (res === true) {
       continue
@@ -140,32 +137,3 @@ export function submit(data: Record<string, any>) {
     })
   }, 2500);
 }
-
-// function valiAllDate(list: Record<string, any>[], isScrollIntoView = true): boolean | string {
-//   for (const item of list) {
-//     if (Array.isArray(item.list) && item.list.length > 0) {
-//       const res = valiAllDate(item.list, isScrollIntoView);
-//       if (res !== true) return res;
-//     }
-//     if (!item.apiKey) continue;
-//     const res = valiDate(item);
-//     if (res === true) {
-//       formatParam(item);
-//       continue
-//     }
-//     if (isScrollIntoView) {
-//       const dom = document.getElementById(item.key)
-//       if (dom) scrollIntoView(dom)
-//     }
-//     return res;
-//   }
-//   return true;
-// }
-
-// function formatParam(item: Record<string, any>) {
-//   if (!Object.prototype.hasOwnProperty.call(item, 'apiKey')) return;
-//   if (item.type === 'phone' && item.showCode) {
-//     formData[item.codeKey] = item.codeValue;
-//   }
-//   formData[item.apiKey] = item.value;
-// }
