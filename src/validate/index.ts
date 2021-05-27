@@ -2,9 +2,6 @@ import { scrollIntoView } from '@/utils/dom';
 import { openLoading, closeLoading } from '@/utils/loading';
 import { Dialog, Toast } from 'vant';
 
-// const formData = store.state.formData
-// const wgForms = store.state.wgForms
-
 const ruleList = {
   phone: (value: string) => {
     if (!value) return '请输入手机号';
