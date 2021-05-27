@@ -26,7 +26,7 @@ export function previewUrl() {
     const arr = window.location.origin.split(":");
     return `${arr[0]}:${arr[1]}:9000`
   }
-  return window.location.origin + "/form-design-h5"
+  return window.location.origin + "/form-design-render"
 }
 export function previewOrigin() {
   if (env() === "development") {
@@ -52,7 +52,7 @@ export function postMsgoUrl() {
     const arr = window.location.origin.split(":");
     return `${arr[0]}:${arr[1]}:9000`
   }
-  return window.location.origin + "/form-design"
+  return window.location.origin + "/form-design-next"
 }
 export function postMsgoOrigin() {
   if (env() === "development") {
@@ -65,7 +65,7 @@ export function testPost(data: unknown) {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({ code: 0, msg: "成功", data: "success", postData: data });
-    }, 200);
+    }, 1000);
   })
 }
 /**
