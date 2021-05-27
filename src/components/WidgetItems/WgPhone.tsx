@@ -46,7 +46,7 @@ export default defineComponent({
           >验证码</div>
           <div class="flex flex-auto flex-center">
             <input placeholder="验证码" type="tel" maxlength={6} v-model={[formData[wgData.codeKey], ['trim']]} class="wg-input flex-auto" />
-            <ValidateCodeBtn phone={wgData.value} style={formatStyle(wgData.style.btnStyle)} />
+            <ValidateCodeBtn phone={formData[wgData.apiKey]} style={formatStyle(wgData.style.btnStyle)} />
           </div>
         </div>
       )
