@@ -2,7 +2,7 @@ import './style.styl'
 import { defineComponent, ref } from "vue";
 import { Toast } from 'vant';
 import { closeLoading, openLoading } from '@/utils/loading';
-import { ApiModule1, getVerifyCode } from '@/api';
+import { getVerifyCode } from '@/api';
 // 使用例子 <ValidateCodeBtn :phone="phone"/>
 export default defineComponent({
   name: "ValidateCodeBtn",
