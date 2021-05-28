@@ -12,10 +12,10 @@ module.exports = {
     } : {}
   },
 
-  // chainWebpack: config => {
-  //   config.plugins.delete('preload')
-  //   config.plugins.delete('prefetch')
-  // },
+  chainWebpack: config => {
+    config.plugins.delete('preload')
+    config.plugins.delete('prefetch')
+  },
 
   devServer: {
     port: 9010,
