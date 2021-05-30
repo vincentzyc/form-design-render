@@ -84,15 +84,7 @@ export default defineComponent({
       </Transition> : null
 
     const listNode = () => list.length > 0 ?
-      (list as Record<string, any>[]).map(item => item.type === 'formList' ?
-        <div
-          key={item.key}
-          class="widget-form-list"
-          style={formatStyle(item.style)}
-        >
-          {(item.list as Record<string, any>[]).map(formItem => <WidgetItems key={formItem.key} item={formItem} />)}
-        </div>
-        : <WidgetItems item={item} key={item.key} />) : []
+      (list as Record<string, any>[]).map(item => <WidgetItems item={item} key={item.key} />) : []
 
     const backDialog = () => isHijack.value ?
       <van-dialog
