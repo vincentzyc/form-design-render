@@ -1,4 +1,4 @@
-import { defineComponent, defineAsyncComponent, resolveDynamicComponent } from "vue"
+import { defineComponent, defineAsyncComponent, resolveDynamicComponent, computed } from "vue"
 
 import WgPhone from "./WgPhone"
 import WgInput from "./WgInput"
@@ -16,6 +16,7 @@ import WgMarqueeSingle from './WgMarqueeSingle'
 import WgVideoPlay from './WgVideoPlay'
 import WgRandomCode from './WgRandomCode'
 import WgHPicker from './HPicker'
+import WgChildList from './WgChildList'
 
 
 export default defineComponent({
@@ -37,7 +38,8 @@ export default defineComponent({
     WgMarquee,
     WgMarqueeSingle,
     WgPhone,
-    WgHPicker
+    WgHPicker,
+    WgChildList
   },
   props: {
     item: {
@@ -47,8 +49,15 @@ export default defineComponent({
   },
   setup(props) {
     const Widget: any = resolveDynamicComponent('Wg' + props.item.type)
+
+    const wgViewStyle = computed(() => {
+      if (Array.isArray(props.item.list)) return { ...props.item.style, backgroundImage: `url(${props.item.backgroundImage})` };
+      return {}
+    })
+    const wgViewClass = computed(() =>props.item.wgClassName ? props.item.wgClassName : 'widget-view')
+
     return () => (
-      <div class="widget-view">
+      <div class={wgViewClass.value} style={wgViewStyle.value}>
         <Widget item={props.item} />
       </div>
     )
