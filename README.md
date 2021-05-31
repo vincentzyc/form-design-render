@@ -5,7 +5,7 @@
 
 拖拽式生成此项目页面的后台系统 —— form-design-next
 
-See [form-design](https://github.com/vincentzyc/form-design-next).
+See [form-design-next](https://github.com/vincentzyc/form-design-next).
 
 ## Project setup
 ```
