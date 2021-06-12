@@ -1,10 +1,10 @@
 import { computed, defineComponent, ref, Transition } from "vue"
 import WidgetItems from "@/components/WidgetItems";
-import '@/assets/css/widget.styl';
 import { formatStyle } from "@/utils/format/unit";
 import { isLink } from "@/utils/validate/link";
 import { useStore } from '@/store'
 import { hasKey } from "@/utils";
+import '@/assets/css/widget.styl';
 
 export default defineComponent({
   name: "renderPage",
