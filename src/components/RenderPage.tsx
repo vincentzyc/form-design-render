@@ -15,7 +15,6 @@ export default defineComponent({
     const backAlert = ref(false)
 
     const pageData = computed(() => store.state.pageData)
-    const formData = computed(() => store.state.formData)
 
     const list = pageData.value ? pageData.value.list : []
     const fixedTop = pageData.value ? pageData.value.fixedTop : []
