@@ -11,3 +11,6 @@ export const useHeight = (element: Element | Ref<Element>) => {
 
   return height;
 };
+
+// use
+// const { height }  = useHeight(Element)

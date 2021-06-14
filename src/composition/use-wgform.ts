@@ -1,7 +1,7 @@
 import { computed } from "vue"
 import { useStore } from '@/store'
 
-export function useWgForm(item: Record<string, any>): Record<string, any> {
+export function useWgForm(item: Record<string, any>) {
   const store = useStore()
   const formData = computed(() => store.state.formData)
   const wgForms = computed(() => store.state.wgForms)
