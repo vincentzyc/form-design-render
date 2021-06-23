@@ -18,7 +18,6 @@ import WgRandomCode from './WgRandomCode'
 import WgHPicker from './HPicker'
 import WgChildList from './WgChildList'
 
-
 export default defineComponent({
   name: "WidgetItems",
   components: {
@@ -51,10 +50,15 @@ export default defineComponent({
     const Widget: any = resolveDynamicComponent('Wg' + props.item.type)
 
     const wgViewStyle = computed(() => {
-      if (Array.isArray(props.item.list)) return { ...props.item.style, backgroundImage: `url(${props.item.backgroundImage})` };
+      if (Array.isArray(props.item.list)) {
+        return {
+          ...props.item.style,
+          backgroundImage: `url(${props.item.backgroundImage})`
+        };
+      }
       return {}
     })
-    const wgViewClass = computed(() =>props.item.wgClassName ? props.item.wgClassName : 'widget-view')
+    const wgViewClass = computed(() => props.item.wgClassName ? props.item.wgClassName : 'widget-view')
 
     return () => (
       <div class={wgViewClass.value} style={wgViewStyle.value}>
