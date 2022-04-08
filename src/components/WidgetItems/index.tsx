@@ -17,6 +17,7 @@ import WgVideoPlay from './WgVideoPlay'
 import WgRandomCode from './WgRandomCode'
 import WgHPicker from './HPicker'
 import WgChildList from './WgChildList'
+import WgTabs from './WgTabs'
 
 export default defineComponent({
   name: "WidgetItems",
@@ -38,7 +39,8 @@ export default defineComponent({
     WgMarqueeSingle,
     WgPhone,
     WgHPicker,
-    WgChildList
+    WgChildList,
+    WgTabs
   },
   props: {
     item: {
