@@ -22,7 +22,7 @@ export default defineComponent({
       (item.list as TypeTabsItem[]).map(tabItem => (
         <Tab title={tabItem.title}>
           {tabItem.list.map(tab => (
-            <WidgetItems item={tab} key={tab.key} />
+            <WidgetItems item={tab} key={tab.key} parentsWg={props.item} />
           ))}
         </Tab>
       )) : []
