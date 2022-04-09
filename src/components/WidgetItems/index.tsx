@@ -46,6 +46,11 @@ export default defineComponent({
     item: {
       type: Object,
       required: true
+    },
+    parentsWg: {
+      type: Object,
+      required: false,
+      default: () => ({ type: 'window' })
     }
   },
   setup(props) {
@@ -64,7 +69,7 @@ export default defineComponent({
 
     return () => (
       <div class={wgViewClass.value} style={wgViewStyle.value}>
-        <Widget item={props.item} />
+        <Widget item={props.item} parentsWg={props.parentsWg} />
       </div>
     )
   }
