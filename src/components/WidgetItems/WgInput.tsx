@@ -7,7 +7,12 @@ export default defineComponent({
     item: {
       type: Object,
       required: true
-    }
+    },
+    // parentsWg: {
+    //   type: Object,
+    //   required: false,
+    //   default: () => ({ type: 'window' })
+    // }
   },
   setup(props) {
     const { wgData, formData } = useWgForm(props.item)
