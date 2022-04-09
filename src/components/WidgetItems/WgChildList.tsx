@@ -12,7 +12,7 @@ export default defineComponent({
   setup(props) {
     const { item } = reactive(props)
     const listNode = () => item.list.length > 0 ?
-      (item.list as Record<string, any>[]).map(childItem => <WidgetItems item={childItem} key={childItem.key} />) : []
+      (item.list as Record<string, any>[]).map(childItem => <WidgetItems item={childItem} key={childItem.key} parentsWg={props.item} />) : []
 
     return () => listNode()
   }
