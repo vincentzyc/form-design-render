@@ -18,6 +18,11 @@ export default defineComponent({
   },
   setup(props) {
     const { item } = reactive(props)
+
+    const onClickTab = (v: number) => {
+      console.log(v);
+    }
+
     const listNode = () => item.list.length > 0 ?
       (item.list as TypeTabsItem[]).map(tabItem => (
         <Tab title={tabItem.title}>
@@ -28,7 +33,7 @@ export default defineComponent({
       )) : []
     return () => (
       <div class="wg-tabs clearfix" style={item.style}>
-        <Tabs v-model={[item.activeTab, 'active']}>
+        <Tabs v-model={[item.activeTab, 'active']} onClick={onClickTab}>
           {listNode()}
         </Tabs>
       </div >
