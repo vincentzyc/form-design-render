@@ -1,6 +1,8 @@
 import { defineComponent, reactive } from "vue";
 import WidgetItems from './index';
 import { Tabs, Tab } from 'vant';
+import { useWgFormList } from '@/composition/use-wgform'
+
 
 interface TypeTabsItem {
   title: string,
@@ -18,9 +20,13 @@ export default defineComponent({
   },
   setup(props) {
     const { item } = reactive(props)
+    const wgFormList = useWgFormList()
 
     const onClickTab = (v: number) => {
       console.log(v);
+      const list = item.list[v].list
+      const { wgForms, formData } =  wgFormList.useRemoveForm(list);
+      console.log(wgForms, formData);
     }
 
     const listNode = () => item.list.length > 0 ?
