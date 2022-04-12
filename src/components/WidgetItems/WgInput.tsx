@@ -1,6 +1,6 @@
 import { defineComponent } from "vue"
 import { changeRem } from "@/utils/format/unit"
-import { useWgForm } from '@/composition/use-wgform'
+import { useWgFormList } from '@/composition/use-wgform'
 
 export default defineComponent({
   props: {
@@ -8,14 +8,10 @@ export default defineComponent({
       type: Object,
       required: true
     },
-    // parentsWg: {
-    //   type: Object,
-    //   required: false,
-    //   default: () => ({ type: 'window' })
-    // }
   },
   setup(props) {
-    const { wgData, formData } = useWgForm(props.item)
+    const wgFormList = useWgFormList()
+    const { wgData, formData } = wgFormList.useAddForm(props.item)
     const wrapClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']
     return () => (
       <div class={wrapClass} style={wgData.style}>
