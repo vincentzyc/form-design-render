@@ -30,7 +30,6 @@ export function useWgFormList() {
         }
       }
     }
-
     return {
       formData: formData.value,
       wgForms: wgForms.value
@@ -44,6 +43,8 @@ export function useWgFormList() {
     useAddForm
   }
 }
+// const wgFormList = useWgFormList()
+// const { wgData, formData } = wgFormList.useAddForm(props.item)
 
 export function useWgForm(item: Record<string, any>) {
   const store = useStore()
