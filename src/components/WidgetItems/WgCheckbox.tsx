@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import { changeRem, formatStyle } from "@/utils/format/unit";
-import { useWgForm } from '@/composition/use-wgform'
+import { useWgFormList } from '@/composition/use-wgform'
 
 export default defineComponent({
   props: {
@@ -10,7 +10,8 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData, formData } = useWgForm(props.item)
+    const wgFormList = useWgFormList()
+    const { wgData, formData } = wgFormList.useAddForm(props.item)
 
     const wrapClass = ['wg-item', 'flex-wrap', 'wg-checkbox', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle'];
     return () => (
