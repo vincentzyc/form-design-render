@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import { Picker } from 'vant';
 import { changeRem } from "@/utils/format/unit"
-import { useWgForm } from '@/composition/use-wgform';
+import { useWgFormList } from '@/composition/use-wgform';
 import { ref } from 'vue';
 
 export default defineComponent({
@@ -12,7 +12,8 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData, formData } = useWgForm(props.item)
+    const wgFormList = useWgFormList()
+    const { wgData, formData } = wgFormList.useAddForm(props.item)
     const showPicker = ref(false)
     const wrapClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle'];
 
