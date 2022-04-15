@@ -1,7 +1,7 @@
 import { defineComponent, ref } from 'vue';
 import { DatetimePicker } from 'vant';
 import { changeRem, formatStyle } from "@/utils/format/unit";
-import { useWgForm } from '@/composition/use-wgform';
+import { useWgFormList } from '@/composition/use-wgform';
 
 export default defineComponent({
   props: {
@@ -11,7 +11,8 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData, formData } = useWgForm(props.item)
+    const wgFormList = useWgFormList()
+    const { wgData, formData } = wgFormList.useAddForm(props.item)
 
     const minDate = new Date(1920, 0, 1)
     const maxDate = new Date(2120, 12, 31)
