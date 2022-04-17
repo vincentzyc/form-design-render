@@ -3,7 +3,7 @@ import { formatStyle } from '@/utils/format/unit'
 import { Checkbox } from 'vant'
 import AgreementPopup from './AgreementPopup'
 import { TitleText } from './types'
-import { useWgForm } from '@/composition/use-wgform'
+import { useWgFormList } from '@/composition/use-wgform'
 
 export default defineComponent({
   props: {
@@ -14,7 +14,8 @@ export default defineComponent({
   },
   setup(props) {
     const elAgreement = ref()
-    const { wgData, formData } = useWgForm(props.item)
+    const wgFormList = useWgFormList()
+    const { wgData, formData } = wgFormList.useAddForm(props.item)
 
     const openAgreement = (text: string, event: MouseEvent) => {
       event.stopPropagation();
