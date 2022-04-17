@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue'
 import createCode from './random-code'
 import { changeRem, formatStyle } from "@/utils/format/unit";
-import { useWgForm } from '@/composition/use-wgform';
+import { useWgFormList } from '@/composition/use-wgform';
 
 export default defineComponent({
   props: {
@@ -11,14 +11,17 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { wgData, formData } = useWgForm(props.item)
-
-    const directionClass = wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle';
     const getCode = () => {
       const randomData = createCode()
       wgData.codeValue = randomData.code;
       wgData.style.btnStyle.fontFamily = randomData.font;
     }
+    const wgFormList = useWgFormList()
+    const { wgData, formData } = wgFormList.useAddForm(props.item)
+
+    wgData.getCode = getCode
+    const directionClass = wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle';
+    
     getCode()
     return () => (
       <div class="wg-random-code" style={formatStyle(wgData.style)}>
