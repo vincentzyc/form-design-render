@@ -45,21 +45,3 @@ export function useWgFormList() {
 }
 // const wgFormList = useWgFormList()
 // const { wgData, formData } = wgFormList.useAddForm(props.item)
-
-export function useWgForm(item: Record<string, any>) {
-  const store = useStore()
-  const formData = computed(() => store.state.formData)
-  const wgForms = computed(() => store.state.wgForms)
-  const index = wgForms.value.findIndex(v => v.key === item.key)
-  index > -1 ? wgForms.value.splice(index, 1, item) : wgForms.value.push(item)
-  if (item.apiKey) formData.value[item.apiKey] = item.value || ''
-  if (item.codeKey) formData.value[item.codeKey] = item.value || ''
-  return {
-    formData: formData.value,
-    wgForms: wgForms.value,
-    wgData: item
-  }
-}
-// use
-// import { useWgForm } from '@/composition/use-wgform'
-// const { wgData,formData } = useWgForm(props.item)
