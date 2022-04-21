@@ -1,4 +1,4 @@
-export interface TypesVideoPlay {
+export interface TypesWechat {
   type: "Wechat",
   name: "微信关注",
   value: "微信账号",
