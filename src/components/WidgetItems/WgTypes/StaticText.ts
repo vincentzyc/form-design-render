@@ -1,13 +1,13 @@
 export interface TypesStaticText {
-  type: "StaticText",
-  name: "文本描述",
-  value: "这是一段文本",
-  link: "",
-  popupList: [],
+  type: string,
+  name: string,
+  value: string,
+  link: string,
+  popupList: Record<string, any>[],
   showPopup: false,
-  backgroundImage: "",
-  backgroundColor: "",
+  backgroundImage: string,
+  backgroundColor: string,
   style: {
-    margin: "0px 0px 0px 0px"
+    margin: string
   }
 }
