@@ -1,12 +1,13 @@
-import { defineComponent, ref } from "vue"
+import { defineComponent, ref, PropType } from "vue"
 import { changeRem, formatStyle } from '@/utils/format/unit';
 import { jumpLink } from '@/utils/validate/link';
 import CustomPopup from './WgPopup'
+import { TypesStaticText } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesStaticText>,
       default: () => ({})
     }
   },
