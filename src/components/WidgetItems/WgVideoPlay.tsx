@@ -1,10 +1,11 @@
 import { formatStyle } from "@/utils/format/unit"
-import { defineComponent } from "vue"
+import { defineComponent, PropType } from "vue"
+import { TypesVideoPlay } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesVideoPlay>,
       required: true
     }
   },
