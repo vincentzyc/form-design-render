@@ -3,7 +3,7 @@ export interface TypesStaticText {
   name: string,
   value: string,
   link: string,
-  popupList: Record<string, any>[],
+  popupList: Record<any, any>[],
   showPopup: false,
   backgroundImage: string,
   backgroundColor: string,
