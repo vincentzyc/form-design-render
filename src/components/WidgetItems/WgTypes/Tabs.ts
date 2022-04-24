@@ -1,17 +1,17 @@
-  export interface TypesTabs {
-  type: "Tabs",
-  name: "Tabs标签",
-  value: 0,
-  activeTab: 0,
+export interface TypesTabs {
+  type: string, // Tabs
+  name: string, // Tabs标签
+  value: number, // 0
+  activeTab: number, // 0
   wgClassName: "wg-formlist widget-active",
   list: [{
-    title: "标签一",
-    list: []
+    title: string, // 标签一
+    list: Record<any, any>[]  // []
   }, {
-    title: "标签二",
-    list: []
+    title: string, // 标签二
+    list: Record<any, any>[] // []
   }],
   style: {
-    margin: "0px 0px 0px 0px"
+    margin: string // 0px 0px 0px 0px
   }
 }
