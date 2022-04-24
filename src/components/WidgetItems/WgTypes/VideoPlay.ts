@@ -1,17 +1,17 @@
 export interface TypesVideoPlay {
-  type: "VideoPlay",
-  name: "视频播放",
+  type: string, // VideoPlay
+  name: string,  // 视频播放
   videoAttr: {
-    src: "https://www.runoob.com/try/demo_source/movie.mp4",
-    poster: "https://www.runoob.com/images/logo.png",
-    autoplay: false,
-    loop: false,
-    controls: true
+    src: string, // https://www.runoob.com/try/demo_source/movie.mp4
+    poster: string, // https://www.runoob.com/images/logo.png
+    autoplay: boolean, // false
+    loop: boolean, // false
+    controls: boolean //true
   },
   style: {
-    width: '100%',
-    pxHeight: 200,
-    height: '200px',
-    margin: "0px 0px 0px 0px"
+    width: string, // 100%
+    pxHeight: number, // 200
+    height: string, // 200px
+    margin: string // 0px 0px 0px 0px
   }
 }
