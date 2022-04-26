@@ -1,20 +1,20 @@
-import { defineComponent, reactive } from "vue";
+import { defineComponent, PropType, reactive } from "vue";
 import WidgetItems from './index';
 import { Tabs, Tab } from 'vant';
 import { useWgFormList } from '@/composition/use-wgform'
+import { TypesTabs } from "./WgTypes";
 
-
-interface TypeTabsItem {
-  title: string,
-  name: string,
-  list: Record<any, any>[]
-}
+// interface TypeTabsItem {
+//   title: string,
+//   name: string,
+//   list: Record<any, any>[]
+// }
 
 export default defineComponent({
   name: "WgTabs",
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesTabs>,
       required: true
     }
   },
@@ -23,14 +23,12 @@ export default defineComponent({
     const wgFormList = useWgFormList()
 
     const onClickTab = (v: number) => {
-      console.log(v);
       const list = item.list[v].list
       const { wgForms, formData } =  wgFormList.useRemoveForm(list);
-      console.log(wgForms, formData);
     }
 
     const listNode = () => item.list.length > 0 ?
-      (item.list as TypeTabsItem[]).map(tabItem => (
+      item.list.map(tabItem => (
         <Tab title={tabItem.title}>
           {tabItem.list.map(tab => (
             <WidgetItems item={tab} key={tab.key} parentsWg={props.item} />
