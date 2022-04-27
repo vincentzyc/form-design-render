@@ -24,7 +24,7 @@ export default defineComponent({
 
     const onClickTab = (v: number) => {
       const list = item.list[v].list
-      const { wgForms, formData } =  wgFormList.useRemoveForm(list);
+      wgFormList.useRemoveForm(list);
     }
 
     const listNode = () => item.list.length > 0 ?
