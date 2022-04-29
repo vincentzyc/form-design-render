@@ -1,11 +1,12 @@
-import { defineComponent } from "vue"
+import { defineComponent, PropType } from "vue"
 import { formatStyle } from "@/utils/format/unit";
 import { isLink, jumpLink } from "@/utils/validate/link";
+import { TypesImgShow } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesImgShow>,
       required: true
     }
   },
