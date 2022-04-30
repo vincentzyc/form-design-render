@@ -1,13 +1,14 @@
-import { defineComponent } from "vue"
+import { defineComponent, PropType } from "vue"
 import { formatStyle } from "@/utils/format/unit"
 import { isWechat } from "@/utils/validate/browser"
 import { copyText } from "@/utils/clipboard"
 import { Dialog } from "vant"
+import { TypesWechat } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesWechat>,
       required: true
     }
   },
