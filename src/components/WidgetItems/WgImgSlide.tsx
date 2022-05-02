@@ -1,11 +1,12 @@
 import { changeRem } from '@/utils/format/unit';
 import { Swipe, SwipeItem } from 'vant';
-import { defineComponent } from "vue"
+import { defineComponent, PropType } from "vue"
+import { TypesImgSlide } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesImgSlide>,
       required: true
     }
   },
