@@ -1,12 +1,19 @@
 import { computed } from "vue"
 import { useStore } from '@/store'
 
+interface BaseItem {
+  key: string,
+  apiKey?: string,
+  codeKey?: string,
+  value?: any
+}
+
 export function useWgFormList() {
   const store = useStore()
   const formData = computed(() => store.state.formData)
   const wgForms = computed(() => store.state.wgForms)
 
-  const useAddForm = <T>(item: T) => {
+  const useAddForm = <T extends BaseItem>(item: T) => {
     const index = wgForms.value.findIndex(v => v.key === item.key)
     index > -1 ? wgForms.value.splice(index, 1, item) : wgForms.value.push(item)
     if (item.apiKey) formData.value[item.apiKey] = item.value || ''
