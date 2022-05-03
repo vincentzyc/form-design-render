@@ -2,7 +2,6 @@ import { defineComponent, ref,PropType } from 'vue'
 import { formatStyle } from '@/utils/format/unit'
 import { Checkbox } from 'vant'
 import AgreementPopup from './AgreementPopup'
-import { TitleText } from './types'
 import { useWgFormList } from '@/composition/use-wgform'
 import { TypesAgreement } from "../WgTypes" 
 
@@ -27,7 +26,7 @@ export default defineComponent({
         <Checkbox v-model={formData[wgData.apiKey]} style={formatStyle(wgData.style)} shape="square">
           <p style={{ margin: 0, color: wgData.style.color }}>
             <span>{wgData.tipText}</span>
-            {wgData.titleTexts.map((titleText: TitleText, key: number) => (
+            {wgData.titleTexts.map((titleText, key: number) => (
               <span key={key}>
                 {key > 0 && <span>和</span>}
                 {titleText.title && (
