@@ -1,14 +1,15 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref,PropType } from 'vue'
 import { formatStyle } from '@/utils/format/unit'
 import { Checkbox } from 'vant'
 import AgreementPopup from './AgreementPopup'
 import { TitleText } from './types'
 import { useWgFormList } from '@/composition/use-wgform'
+import { TypesAgreement } from "../WgTypes" 
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesAgreement>,
       required: true
     }
   },
