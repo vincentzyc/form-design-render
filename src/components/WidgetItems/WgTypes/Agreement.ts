@@ -1,4 +1,5 @@
 export interface TypesAgreement {
+  key: string,
   type: string, // "Agreement",
   name: string, // "用户协议",
   apiKey: string, // "agreement",
