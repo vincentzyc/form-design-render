@@ -6,7 +6,7 @@ export function useWgFormList() {
   const formData = computed(() => store.state.formData)
   const wgForms = computed(() => store.state.wgForms)
 
-  const useAddForm = (item: Record<string, any>) => {
+  const useAddForm = <T>(item: T) => {
     const index = wgForms.value.findIndex(v => v.key === item.key)
     index > -1 ? wgForms.value.splice(index, 1, item) : wgForms.value.push(item)
     if (item.apiKey) formData.value[item.apiKey] = item.value || ''
