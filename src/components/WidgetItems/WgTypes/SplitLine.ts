@@ -1,11 +1,11 @@
 export interface TypesSplitLine {
-  type: "SplitLine",
-  name: "分割线",
-  value: "solid",
+  type: string, // "SplitLine",
+  name: string, // "分割线",
+  value: string, // "solid",
   style: {
-    borderColor: "#d3d3d3",
-    borderStyle: "solid",
-    borderTopWidth: "1px",
-    margin: "20px 0px 20px 0px"
+    borderColor: string, // "#d3d3d3",
+    borderStyle: string, // "solid",
+    borderTopWidth: string, // "1px",
+    margin: string, // "20px 0px 20px 0px"
   }
 }
