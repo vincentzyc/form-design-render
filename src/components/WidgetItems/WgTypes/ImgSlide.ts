@@ -1,4 +1,5 @@
 export interface TypesImgSlide {
+  key: string,
   type: string, // "ImgSlide",
   name: string, // "图片轮播",
   value: [{

@@ -1,4 +1,5 @@
 export interface TypesTabs {
+  key: string,
   type: string, // Tabs
   name: string, // Tabs标签
   value: number, // 0

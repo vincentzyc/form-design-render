@@ -1,4 +1,5 @@
 export interface TypesStaticText {
+  key: string,
   type: string, // StaticText
   name: string, // 文本描述
   value: string, // 这是一段文本

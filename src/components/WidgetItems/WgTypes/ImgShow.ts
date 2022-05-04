@@ -1,4 +1,5 @@
 export interface TypesImgShow {
+  key: string,
   type: string, //"ImgShow",
   name: string, // "图片展示",
   positionFixed: 'auto' | 'top' | 'bottom',

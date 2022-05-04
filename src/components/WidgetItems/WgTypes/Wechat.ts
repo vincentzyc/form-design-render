@@ -1,4 +1,5 @@
 export interface TypesWechat {
+  key: string,
   type: string, // "Wechat",
   name: string, // "微信关注",
   value: string, // "微信账号",

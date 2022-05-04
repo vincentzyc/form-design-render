@@ -1,4 +1,5 @@
 export interface TypesSplitLine {
+  key: string,
   type: string, // "SplitLine",
   name: string, // "分割线",
   value: string, // "solid",

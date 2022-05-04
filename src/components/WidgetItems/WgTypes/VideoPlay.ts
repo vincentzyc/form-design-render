@@ -1,4 +1,5 @@
 export interface TypesVideoPlay {
+  key: string,
   type: string, // VideoPlay
   name: string,  // 视频播放
   videoAttr: {
