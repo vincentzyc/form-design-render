@@ -1,11 +1,11 @@
 import { changeRem, formatStyle } from "@/utils/format/unit";
-import { defineComponent, nextTick, onBeforeUnmount, onMounted, ref } from "vue";
-import { ScrollItem } from "./types";
+import { defineComponent, nextTick, onBeforeUnmount, onMounted, ref, PropType } from "vue";
+import { TypesMarqueeSingle } from "../WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesMarqueeSingle>,
       required: true
     }
   },
@@ -14,13 +14,13 @@ export default defineComponent({
       animateTimeId = ref(0),
       scrollTimeId = ref(0)
 
-    const scrollList = ref([])
+    const scrollList = ref<typeof props.item.textList>([])
 
     const getScroll = () => {
       const scrollStyle = formatStyle({ ...props.item.style, borderRadius: props.item.style.height })
       return (
         <ul class="scroll-wrapper" style={scrollStyle}>
-          {scrollList.value.map((text: ScrollItem, i: number) => (
+          {scrollList.value.map((text, i: number) => (
             <li
               key={i}
               class={['flex', 'align-middle', 'scroll-item', { 'anim': animate.value && i === 0 }]}
