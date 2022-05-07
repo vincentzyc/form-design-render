@@ -1,10 +1,11 @@
-import { computed, defineComponent, nextTick, onMounted, ref } from "vue";
+import { computed, defineComponent, nextTick, onMounted, PropType, ref } from "vue";
 import { changeRem, formatStyle } from "@/utils/format/unit";
+import { TypesMarquee } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesMarquee>,
       required: true
     }
   },
