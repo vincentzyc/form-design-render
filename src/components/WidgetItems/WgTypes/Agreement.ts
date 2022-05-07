@@ -6,10 +6,10 @@ export interface TypesAgreement {
   value: boolean, // false,
   isRequired: boolean, // true,
   tipText: string, // "我已阅读并同意",
-  titleTexts: [{
+  titleTexts: {
     title: string, // "《隐私权协议》",
     text: string, // ""
-  }],
+  }[],
   style: {
     fontsize: number, // 12,
     fontSize: string, // "12px",
