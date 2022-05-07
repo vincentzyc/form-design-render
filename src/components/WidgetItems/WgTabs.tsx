@@ -4,12 +4,6 @@ import { Tabs, Tab } from 'vant';
 import { useWgFormList } from '@/composition/use-wgform'
 import { TypesTabs } from "./WgTypes";
 
-// interface TypeTabsItem {
-//   title: string,
-//   name: string,
-//   list: Record<any, any>[]
-// }
-
 export default defineComponent({
   name: "WgTabs",
   props: {
