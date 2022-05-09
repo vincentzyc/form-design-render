@@ -5,13 +5,10 @@ export interface TypesTabs {
   value: number, // 0
   activeTab: number, // 0
   wgClassName: "wg-formlist widget-active",
-  list: [{
+  list: {
     title: string, // 标签一
     list: Record<any, any>[]  // []
-  }, {
-    title: string, // 标签二
-    list: Record<any, any>[] // []
-  }],
+  }[],
   style: {
     margin: string // 0px 0px 0px 0px
   }
