@@ -10,7 +10,7 @@ export interface TypesWechat {
   showLogo: boolean, // true,
   backgroundColor: string, // "",
   positionFixed: 'auto' | 'top' | 'bottom',
-  fixedTypes: ['auto', 'top', 'bottom'], // auto--正常 top--顶部悬浮  custom--自定义位置悬浮  bottom--底部悬浮
+  fixedTypes: string[], // ['auto', 'top', 'bottom'] auto--正常 top--顶部悬浮  custom--自定义位置悬浮  bottom--底部悬浮
   scrollHeight: number, // 0,
   style: {
     isImgBtn: boolean, // false,
