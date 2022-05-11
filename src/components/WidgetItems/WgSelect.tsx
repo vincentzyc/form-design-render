@@ -2,12 +2,13 @@ import { defineComponent } from 'vue'
 import { Picker } from 'vant';
 import { changeRem } from "@/utils/format/unit"
 import { useWgFormList } from '@/composition/use-wgform';
-import { ref } from 'vue';
+import { ref, PropType } from 'vue';
+import { TypesSelect } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesSelect>,
       required: true
     }
   },
