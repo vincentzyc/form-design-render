@@ -1,12 +1,13 @@
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, PropType } from 'vue';
 import { DatetimePicker } from 'vant';
 import { changeRem, formatStyle } from "@/utils/format/unit";
 import { useWgFormList } from '@/composition/use-wgform';
+import { TypesDatePicker } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesDatePicker>,
       required: true
     }
   },
