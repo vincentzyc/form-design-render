@@ -1,11 +1,12 @@
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { changeRem, formatStyle } from "@/utils/format/unit";
 import { useWgFormList } from '@/composition/use-wgform'
+import { TypesCheckbox } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesCheckbox>,
       required: true
     }
   },
