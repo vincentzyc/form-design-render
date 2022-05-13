@@ -1,19 +1,20 @@
 import { useWgFormList } from "@/composition/use-wgform";
 import { changeRem } from "@/utils/format/unit";
-import { defineComponent } from "vue"
+import { defineComponent, PropType } from "vue"
 import HPicker from './HPicker'
+import { TypesHPicker } from "../WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesHPicker>,
       required: true
     }
   },
   setup(props) {
     const wgFormList = useWgFormList()
     const { wgData, formData } = wgFormList.useAddForm(props.item)
-    
+
     const wrapClass = ['wg-item', wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle']
 
     return () => (
