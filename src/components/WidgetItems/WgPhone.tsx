@@ -1,12 +1,13 @@
-import { defineComponent } from "vue"
+import { defineComponent, PropType } from "vue"
 import { useWgFormList } from '@/composition/use-wgform'
 import { changeRem, formatStyle } from "@/utils/format/unit"
 import ValidateCodeBtn from '@/components/base/ValidateCodeBtn'
+import { TypesPhone } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesPhone>,
       required: true
     }
   },
