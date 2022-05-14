@@ -1,12 +1,13 @@
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import createCode from './random-code'
 import { changeRem, formatStyle } from "@/utils/format/unit";
 import { useWgFormList } from '@/composition/use-wgform';
+import { TypesRandomCode } from "../WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesRandomCode>,
       required: true
     }
   },
@@ -21,7 +22,7 @@ export default defineComponent({
 
     wgData.getCode = getCode
     const directionClass = wgData.label.labelPosition === 'top' ? 'flex-column' : 'align-middle';
-    
+
     getCode()
     return () => (
       <div class="wg-random-code" style={formatStyle(wgData.style)}>
