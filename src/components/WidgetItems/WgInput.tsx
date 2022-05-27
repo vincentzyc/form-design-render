@@ -1,4 +1,4 @@
-import { defineComponent,PropType } from "vue"
+import { defineComponent, PropType } from "vue"
 import { changeRem } from "@/utils/format/unit"
 import { useWgFormList } from '@/composition/use-wgform'
 import { TypesInput } from "./WgTypes";
@@ -22,7 +22,10 @@ export default defineComponent({
           style={{ width: changeRem(wgData.label.labelWidth) }}
         >{wgData.label.labelTitle}</div>
         <div class="flex-auto">
-          <input v-model={formData[wgData.apiKey]} placeholder={wgData.placeholder} class="wg-input" id={wgData.key} />
+          {wgData.isTextarea ?
+            <textarea v-model={formData[wgData.apiKey]} placeholder={wgData.placeholder} class="wg-textarea" id={wgData.key} /> :
+            <input v-model={formData[wgData.apiKey]} placeholder={wgData.placeholder} class="wg-input" id={wgData.key} />
+          }
         </div>
       </div>
     )
