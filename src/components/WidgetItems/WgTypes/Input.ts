@@ -1,20 +1,20 @@
 export interface TypesInput {
   key: string,
-  type: "Input",
-  name: "输入框",
-  placeholder: "请输入姓名",
-  showLabel: false,
+  type: string, // "Input",
+  name: string, // "输入框",
+  placeholder: string, //"请输入姓名",
+  showLabel: boolean, // false,
   isTextarea: boolean, // false
   label: {
-    labelTitle: "姓名",
+    labelTitle: string, // "姓名",
     labelPosition: "left" | "top",
-    labelwidth: 50,
-    labelWidth: "50px"
+    labelwidth: number, // 50,
+    labelWidth: string, // "50px"
   },
-  value: "",
-  apiKey: "name",
-  fieldTypes: "inputTypes",
+  value: string, // "",
+  apiKey: string, // "name",
+  fieldTypes: string, // "inputTypes",
   style: {
-    margin: "0px 0px 0px 0px"
+    margin: string, // "0px 0px 0px 0px"
   }
 }
