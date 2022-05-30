@@ -1,19 +1,19 @@
 export interface TypesDatePicker {
   key: string,
-  type: "DatePicker",
-  name: "日期选择器",
+  type: string, // "DatePicker",
+  name: string, // "日期选择器",
   label: {
-    labelTitle: "生日",
-    labelwidth: 50,
-    labelWidth: "50px",
+    labelTitle: string, // "生日",
+    labelwidth: number, // 50,
+    labelWidth: string, // "50px",
     labelPosition: "left" | "top"
   },
-  apiKey: "birthday",
-  value: "",
-  showLabel: true,
-  placeholder: "请选择日期",
-  fieldTypes: "dateTypes",
+  apiKey: string, // "birthday",
+  value: string, // "",
+  showLabel: boolean, // true,
+  placeholder: string, // "请选择日期",
+  fieldTypes: string, // "dateTypes",
   style: {
-    margin: "0px 0px 0px 0px"
+    margin: string, // "0px 0px 0px 0px"
   }
 }
