@@ -1,28 +1,28 @@
 export interface TypesPhone {
   key: string,
-  type: "Phone",
-  name: "手机号",
-  placeholder: "请输入手机号",
-  showLabel: false,
+  type: string, // "Phone",
+  name: string, // "手机号",
+  placeholder: string, // "请输入手机号",
+  showLabel: boolean, //false,
   label: {
-    labelTitle: "手机号",
+    labelTitle: string, // "手机号",
     labelPosition: "left" | "top",
-    labelwidth: 50,
-    labelWidth: "50px"
+    labelwidth: number, // 50,
+    labelWidth: string, // "50px"
   },
-  value: "",
-  apiKey: "phone",
-  codeValue: "",
-  codeKey: "verifyCode",
-  showCode: true,
+  value: string, //  "",
+  apiKey: string, // "phone",
+  codeValue: string, // "",
+  codeKey: string, // "verifyCode",
+  showCode: boolean, //  true,
   style: {
-    margin: "0px 0px 0px 0px",
+    margin: string, // "0px 0px 0px 0px",
     btnStyle: {
-      backgroundColor: "#409EFF",
-      color: "#fff",
-      borderColor: "#409EFF",
-      borderRadius: '5px',
-      borderradius: 5,
+      backgroundColor: string, // "#409EFF",
+      color: string, //  "#fff",
+      borderColor: string, // "#409EFF",
+      borderRadius: string, // '5px',
+      borderradius: number, // 5,
     }
   }
 }
