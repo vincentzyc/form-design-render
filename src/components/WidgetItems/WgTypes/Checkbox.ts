@@ -1,27 +1,19 @@
 export interface TypesCheckbox {
   key: string,
-  type: "Checkbox",
-  name: "选择框",
-  value: [],
-  apiKey: "shootPlace",
-  isRadio: false,
+  type: string, // "Checkbox",
+  name: string, // "选择框",
+  value: string[], // [],
+  apiKey: string, // "shootPlace",
+  isRadio: boolean, // false,
   label: {
-    labelTitle: "旅拍城市",
-    labelwidth: 66,
-    labelWidth: "66px",
+    labelTitle: string, // "旅拍城市",
+    labelwidth: number, // 66,
+    labelWidth: string, // "66px",
     labelPosition: "left" | "top"
   },
-  fieldTypes: "checkboxTypes",
-  options: [
-    "北京",
-    "三亚",
-    "丽江",
-    "巴厘岛",
-    "马尔代夫",
-    "威尼斯",
-    "其他"
-  ],
+  fieldTypes: string, // "checkboxTypes",
+  options: string[], // ["北京","三亚","丽江","巴厘岛","马尔代夫","威尼斯","其他"],
   style: {
-    margin: "0px 0px 0px 0px"
+    margin: string, // "0px 0px 0px 0px"
   }
 }
