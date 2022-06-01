@@ -1,29 +1,29 @@
 export interface TypesRandomCode {
   key: string,
-  type: "RandomCode",
-  name: "随机码",
-  placeholder: "请输入验证码",
+  type: string, // "RandomCode",
+  name: string, // "随机码",
+  placeholder: string, // "请输入验证码",
   showLabel: false,
   label: {
-    labelTitle: "验证码",
+    labelTitle: string, // "验证码",
     labelPosition: "left" | "top",
-    labelwidth: 66,
-    labelWidth: "66px"
+    labelwidth: number, // 66,
+    labelWidth: string, // "66px"
   },
-  value: "",
-  apiKey: "randomCode",
+  value: string, // "",
+  apiKey: string, // "randomCode",
   codeValue: string, // ""
   getCode: () => void,
   style: {
-    margin: "0px 0px 0px 0px",
+    margin: string, // "0px 0px 0px 0px",
     btnStyle: {
       fontFamily: string, // 'Helvetica Neue',
-      backgroundColor: "#409EFF",
-      color: "#fff",
-      fontSize: "20px",
-      fontsize: 20,
-      borderRadius: '5px',
-      borderradius: 5,
+      backgroundColor: string, // "#409EFF",
+      color: string, // "#fff",
+      fontSize: string, // "20px",
+      fontsize: number, // 20,
+      borderRadius: string, // '5px',
+      borderradius: number, // 5,
     }
   }
 }
