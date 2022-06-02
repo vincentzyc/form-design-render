@@ -4,7 +4,7 @@ export interface TypesTabs {
   name: string, // Tabs标签
   value: number, // 0
   activeTab: number, // 0
-  wgClassName: "wg-formlist widget-active",
+  wgClassName: string, // "wg-formlist widget-active",
   list: {
     title: string, // 标签一
     list: Record<any, any>[]  // []
