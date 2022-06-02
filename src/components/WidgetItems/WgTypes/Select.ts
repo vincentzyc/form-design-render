@@ -1,25 +1,20 @@
 export interface TypesSelect {
   key: string,
-  type: "Select",
-  name: "下拉选择框",
-  value: "",
-  apiKey: "educationLevel",
-  placeholder: "请选择教育程度",
-  showLabel: true,
+  type: string, // "Select",
+  name: string, //  "下拉选择框",
+  value: string, //  "",
+  apiKey: string, //  "educationLevel",
+  placeholder: string, //  "请选择教育程度",
+  showLabel: boolean, //  true,
   label: {
-    labelTitle: "教育程度",
+    labelTitle: string, //  "教育程度",
     labelPosition: "left" | "top",
-    labelwidth: 66,
-    labelWidth: "66px"
+    labelwidth: number, //  66,
+    labelWidth: string, //  "66px"
   },
-  fieldTypes: "selectTypes",
-  options: [
-    "硕士及以上",
-    "本科",
-    "大专",
-    "中专/高中及以下"
-  ],
+  fieldTypes: string, //  "selectTypes",
+  options: string[], // ["硕士及以上","本科","大专","中专/高中及以下"],
   style: {
-    "margin": "0px 0px 0px 0px"
+    margin: string, //  "0px 0px 0px 0px"
   }
 }
