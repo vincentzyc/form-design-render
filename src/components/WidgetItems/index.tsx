@@ -18,6 +18,7 @@ import WgRandomCode from './WgRandomCode'
 import WgHPicker from './HPicker'
 import WgChildList from './WgChildList'
 import WgTabs from './WgTabs'
+import WgCountDown from './WgCountDown'
 
 export default defineComponent({
   name: "WidgetItems",
@@ -40,7 +41,8 @@ export default defineComponent({
     WgPhone,
     WgHPicker,
     WgChildList,
-    WgTabs
+    WgTabs,
+    WgCountDown
   },
   props: {
     item: {
