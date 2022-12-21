@@ -1,12 +1,13 @@
-import { computed, defineComponent } from "vue"
+import { computed, defineComponent, PropType } from "vue"
 import { handleSubmit } from "@/validate/index"
 import { formatStyle } from "@/utils/format/unit";
 import { useStore } from '@/store'
+import { TypesButton } from "./WgTypes";
 
 export default defineComponent({
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesButton>,
       required: true
     }
   },
