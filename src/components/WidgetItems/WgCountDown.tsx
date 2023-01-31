@@ -1,4 +1,5 @@
-import { defineComponent, reactive, ref, watch } from "vue";
+import { defineComponent, PropType, reactive, ref, watch } from "vue";
+import { TypesCountDown } from "./WgTypes";
 
 import { isNumeric } from "@/utils/validate/number";
 const SECOND = 1000;
@@ -14,7 +15,7 @@ export default defineComponent({
   name: "WgCountDown",
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<TypesCountDown>,
       required: true
     }
   },
@@ -58,7 +59,6 @@ export default defineComponent({
       };
     }
     function initEndTimeCountDown() {
-      if (!isNumeric(item.endTime)) return
       isFinished.value = item.endTime < Date.now()
       if (isFinished.value) return ``
       parseTime.value = getTime(item.endTime - Date.now())
