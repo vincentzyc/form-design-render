@@ -1,7 +1,6 @@
 import { defineComponent, PropType, reactive, ref, watch } from "vue";
 import { TypesCountDown } from "./WgTypes";
 
-import { isNumeric } from "@/utils/validate/number";
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
