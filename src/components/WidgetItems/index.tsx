@@ -7,6 +7,7 @@ import WgSelect from "./WgSelect"
 import WgSwitch from "./WgSwitch"
 import WgDatePicker from "./WgDatePicker"
 import WgImgShow from "./WgImgShow"
+import WgImgSlide from "./WgImgSlide"
 import WgStaticText from "./WgStaticText"
 import WgSplitLine from "./WgSplitLine"
 import WgWechat from './WgWechat'
@@ -25,6 +26,7 @@ export default defineComponent({
   components: {
     WgButton: defineAsyncComponent(() => import("./WgButton"/* webpackChunkName: "WgButton" */)),
     WgImgShow,
+    WgImgSlide,
     WgVideoPlay,
     WgStaticText,
     WgSplitLine,
