@@ -43,7 +43,6 @@ export default defineComponent({
             v-model={formData[wgData.apiKey]}
             placeholder={wgData.placeholder}
             class="wg-input" />
-          <i class="cubeic-select"></i>
         </div>
         <van-popup v-model={[showPicker.value, 'show']} round position="bottom">
           <Picker
