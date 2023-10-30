@@ -1,6 +1,6 @@
 import './style.styl'
 import { defineComponent, ref } from "vue";
-import { Toast } from 'vant';
+import { showToast } from 'vant';
 import { closeLoading, openLoading } from '@/utils/loading';
 import { getVerifyCode } from '@/api';
 // 使用例子 <ValidateCodeBtn :phone="phone"/>
@@ -52,12 +52,12 @@ export default defineComponent({
           disbtn.value = false;
         }
       );
-      Toast('验证码已发送')
+      showToast('验证码已发送')
     }
     const getCode = async () => {
       if (disbtn.value) return;
       if (!(/^1[3-9]\d{9}$/.test(props.phone))) {
-        Toast('请输入正确的手机号');
+        showToast('请输入正确的手机号');
         return;
       }
       openLoading('正在发送...');
