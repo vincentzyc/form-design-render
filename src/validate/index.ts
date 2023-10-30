@@ -1,6 +1,6 @@
 import { scrollIntoView } from '@/utils/dom';
 import { openLoading, closeLoading } from '@/utils/loading';
-import { Dialog, Toast } from 'vant';
+import { showDialog, showToast } from 'vant';
 
 const ruleList = {
   phone: (value: string) => {
@@ -103,7 +103,7 @@ export function valiDate(obj: Record<string, any>): boolean | string {
 
 export function handleSubmit(formData: Record<string, any>, wgForms: Record<string, any>[]) {
   const valiDateRes = valiWgValue(formData, wgForms)
-  if (valiDateRes !== true && valiDateRes !== false) return Toast(valiDateRes)
+  if (valiDateRes !== true && valiDateRes !== false) return showToast(valiDateRes)
   submit(formData);
 }
 
@@ -129,7 +129,7 @@ export function submit(data: Record<string, any>) {
   openLoading("正在提交...")
   setTimeout(() => {
     closeLoading()
-    Dialog.alert({
+    showDialog({
       message: '提交成功'
     })
   }, 2500);
