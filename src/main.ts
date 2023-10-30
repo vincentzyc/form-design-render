@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App'
 import { store, key } from './store'
 import Axios from './plugins/axios'
+import 'vant/lib/index.css';
 import '@/assets/css/base.css';
 import '@/assets/css/main.css';
 
