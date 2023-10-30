@@ -2,7 +2,7 @@ import { defineComponent, PropType } from "vue"
 import { formatStyle } from "@/utils/format/unit"
 import { isWechat } from "@/utils/validate/browser"
 import { copyText } from "@/utils/clipboard"
-import { Dialog } from "vant"
+import { showDialog  } from "vant"
 import { TypesWechat } from "./WgTypes";
 
 export default defineComponent({
@@ -15,12 +15,12 @@ export default defineComponent({
   setup(props) {
     const copy = () => {
       copyText(props.item.wechatName).then(() => {
-        Dialog.alert({
+        showDialog({
           title: '复制成功',
           message: '请在微信粘贴搜索'
         }).then(() => confirm())
       }, () => {
-        Dialog.alert({
+        showDialog({
           title: '很抱歉',
           message: '您的浏览器不支持自动复制公众号，请手动复制后打开微信搜索'
         })

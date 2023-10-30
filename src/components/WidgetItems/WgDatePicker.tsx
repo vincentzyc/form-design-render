@@ -1,5 +1,5 @@
 import { defineComponent, ref, PropType } from 'vue';
-import { DatetimePicker } from 'vant';
+import { DatePicker  } from 'vant';
 import { changeRem, formatStyle } from "@/utils/format/unit";
 import { useWgFormList } from '@/composition/use-wgform';
 import { TypesDatePicker } from "./WgTypes";
@@ -63,9 +63,8 @@ export default defineComponent({
           </div>
         </div>
         <van-popup position="bottom" v-model={[showPicker.value, 'show']} teleport="body">
-          <DatetimePicker
+          <DatePicker
             v-model={currentDate.value}
-            type="date"
             title="选择年月日"
             min-date={minDate}
             max-date={maxDate}
